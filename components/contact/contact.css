@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.contact-rectangle {
+    position: relative;
+    width: 1235px;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 61px;
+    background: #ffffff;
+    border: 3px solid #000000;
+    box-shadow: 21px 21px rgba(0, 0, 0, 0.4);
+    margin: 0 auto;
+    margin-top: 40px;
+
+}
+
+.contact-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    gap: 15px
+}
+
+.contact-title {
+    font-family: "Archivo Black", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 61px;
+    white-space: nowrap;
+    color: #000000;
+    text-align: center;
+    margin: 0 auto;
+
+}
+
+.contact-description {
+    font-family: "Archivo", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 61px;
+    white-space: nowrap;
+    color: #000000;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.contact-button {
+    background: #d7eb95;
+    border: 3px solid #2f251b;
+    box-shadow: 5px 5px #1e1e1e;
+    font-family: "Inconsolata", monospace;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    color: #000000;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 150;
+    margin-top: 20px;
+}

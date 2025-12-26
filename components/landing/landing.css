@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&family=Inconsolata:wght@200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap");
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgba(255, 199, 0, 0.3);
+}
+
+.rectangle {
+  margin: 40px 40px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-bottom: 0;
+  border-radius: 55px 55px 0 0;
+}
+
+.flower-icon {
+  position: absolute;
+  top: 0;
+  z-index: -4;
+}
+
+.landing-title {
+  position: absolute;
+  top: 30px;
+  font-family: "Archivo Black", sans-serif;
+  font-size: 48px;
+  line-height: 57px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  color: #e89636;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-text-stroke: 1px black;
+}
+
+.figma-icon {
+  position: absolute;
+  top: -30px;
+  left: 200px;
+}
+
+.orange-half-circle {
+  position: absolute;
+  top: 200px;
+  left: 10px;
+}
+
+.behance {
+  position: absolute;
+  left: 10;
+  bottom: 100px;
+}
+
+.image {
+  position: absolute;
+  display: flex;
+  top: 50%;
+  transform: translateY(-50%);
+  justify-content: center;
+  align-items: center;
+}
+
+.resume-button {
+  position: absolute;
+  background: #d7eb95;
+  border: 3px solid #2f251b;
+  box-shadow: 5px 5px #1e1e1e;
+  font-family: "Inconsolata", monospace;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  color: #000000;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 100px;
+}
+
+.bottom-container-container {
+  background: #000000;
+  overflow: hidden;
+  margin-top: -20px;
+  position: relative;
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  gap: 40px;
+
+  white-space: nowrap;
+  animation: scroll 70s linear infinite;
+}
+
+.rectangle-image {
+
+  width: 100%;
+  height: calc(100vh - 80px);
+  border-top-left-radius: 55px;
+  border-top-right-radius: 55px;
+  background: #ffffff;
+  border: 3px solid #2f251b;
+}
+
+.bottom-container p {
+  background: #000000;
+  color: #ffffff;
+  margin: 0;
+  padding: 30px;
+
+  justify-content: center;
+  font-family: "Archivo", sans-serif;
+  font-size: 24px;
+}
+
+
+
+@media (max-width: 768px) {
+  .icons {
+    display: none;
+  }
+
+  .landing-title {
+    font-size: 24px;
+    line-height: 28px;
+    top: 20px;
+    padding: 0 20px;
+  }
+
+  .image {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

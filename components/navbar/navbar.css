@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap");
+.header {
+  position: relative;
+  border: 2px solid #000;
+  background: #fff;
+  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.25);
+  margin: 56px 83px 0px 83px;
+  font-family: "Space Grotesk";
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+}
+
+.navigation ul {
+  list-style: none;
+  display: flex;
+}
+.navigation-logo ul li {
+  padding-left: 20px;
+}
+
+.navigation-links ul li {
+  text-decoration: none;
+  color: #000;
+  font-family: "Space Grotesk";
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 16px;
+  border-left: 2px solid #000;
+  padding: 20px 30px;
+}
+.navigation-links ul li:hover {
+  color: #000000;
+  font-weight: 900;
+  text-decoration: line-through;
+  text-decoration-thickness: 8px;
+  text-decoration-color: #ffd7462d;
+  /* prevents line from skipping descenders */
+}

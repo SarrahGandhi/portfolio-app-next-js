@@ -1,0 +1,52 @@
+body {
+    background-color: white;
+}
+
+.projects-title-container {
+    padding-top: 40px;
+}
+
+.projects-title {
+    font-family: "Archivo Black", sans-serif;
+
+    -webkit-text-stroke: 2px black;
+    letter-spacing: -0.05em;
+    font-size: 64px;
+    line-height: 76px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    text-align: center;
+    color: #e89636;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.projects-content-item {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    margin: 40px 150px;
+
+}
+
+.projects-content-item-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #2f251b;
+    border-radius: 10px;
+}
+
+.projects-content-item-title {
+    background: #8cecff;
+    padding: 20px;
+    border-bottom: 1px solid #2f251b;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+
+
+}
+
+.projects-content-item-description {
+    padding: 20px;
+    text-align: center;
+}

@@ -1,0 +1,105 @@
+/* @import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap"); */
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:ital,wght@0,100..900;1,100..900&family=Cinzel:wght@400..900&display=swap");
+
+.highlights {
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.highlights-title {
+  font-family: "Archivo Black", sans-serif;
+
+  -webkit-text-stroke: 2px black;
+
+  letter-spacing: -0.05em;
+  font-size: 64px;
+  line-height: 76px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  color: #e89636;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.tagline {
+  position: relative;
+  width: 67px;
+  height: 67px;
+  overflow: hidden;
+}
+
+.highlights-title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 100px;
+}
+
+.highlights-content {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 20px;
+
+}
+
+.highlights-content-item-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 calc(25% - 20px);
+  border: 2px solid #000;
+  padding: 20px;
+  border-radius: 30px;
+  height: 100%;
+  min-height: 250px;
+  min-width: 100px;
+  justify-content: center;
+}
+
+.highlight-button {
+  background: #d7eb95;
+  border: 3px solid #2f251b;
+  box-shadow: 5px 5px #1e1e1e;
+  font-family: "Inconsolata", monospace;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-align: center;
+  color: #000000;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 150;
+  margin-top: 20px;
+}
+
+@media (max-width: 1024px) {
+  .highlights-content-item-container {
+    flex: 1 1 calc(50% - 20px);
+    max-width: calc(50% - 20px);
+  }
+}
+
+/* Small screens: 1 box per row */
+@media (max-width: 640px) {
+  .highlights-content-item-container {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}

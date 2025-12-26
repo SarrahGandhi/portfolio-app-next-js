@@ -1,7 +1,7 @@
 import Navbar from "@/components/navbar/navbar";
 import React from "react";
 
-function ProgesctsPage() {
+function ProjectsPage() {
   return (
     <>
       <h1>PROJECTS</h1>
@@ -9,4 +9,4 @@ function ProgesctsPage() {
   );
 }
 
-export default ProgesctsPage;
+export default ProjectsPage;

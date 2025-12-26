@@ -1,4 +1,4 @@
-import React from "react";
+import Link from "next/link";
 import "./navbar.css";
 
 function Navbar() {
@@ -9,20 +9,20 @@ function Navbar() {
           <div className="navigation-logo">
             <ul>
               <li>
-                <a href="/">Sarrah Gandhi</a>
+                <Link href="/">Sarrah Gandhi</Link>
               </li>
             </ul>
           </div>
           <div className="navigation-links">
             <ul>
               <li>
-                <a href="/about">About//</a>
+                <Link href="/about">About//</Link>
               </li>
               <li>
-                <a href="/projects">Projects</a>
+                <Link href="/projects">Projects</Link>
               </li>
               <li>
-                <a href="/resume">Resume</a>
+                <Link href="/resume">Resume</Link>
               </li>
             </ul>
           </div>

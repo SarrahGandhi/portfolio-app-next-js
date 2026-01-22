@@ -42,9 +42,7 @@ function Highlights() {
           </div>
         ))}
       </div>
-      < div className="highlight-button">
-        <button>View All</button>
-      </div>
+      
     </div>
   );
 }

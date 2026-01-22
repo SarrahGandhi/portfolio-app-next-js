@@ -144,6 +144,15 @@ body {
   transform: translateY(-3px) !important;
 }
 
+.view-details-btn {
+  padding: 20px 32px;
+}
+
+.view-details-btn:hover {
+  background: #5dd9f7;
+  transform: translateY(-3px) !important;
+}
+
 .projects-link-btn svg {
   width: 24px;
   height: 24px;

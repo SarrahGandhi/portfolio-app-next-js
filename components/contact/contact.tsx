@@ -14,7 +14,7 @@ function Contact() {
                             <p>Want to see how to transform your brand into a unique style. sent us a message</p>
                         </div>
                         <div className="contact-button">
-                            <button>Send Message</button>
+                            <a href="mailto:thesarrahgandhi@gmail.com">Send Message</a>
                         </div>
                     </div>
                 </div>

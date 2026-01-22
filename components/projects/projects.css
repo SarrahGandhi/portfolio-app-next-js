@@ -56,13 +56,97 @@ body {
 
 .projects-content-item-image {
   width: 100%;
+  aspect-ratio: 16 / 10;
   overflow: hidden;
+  position: relative;
 }
 
 .projects-content-item-image img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
+  transition: transform 0.3s ease;
+}
+
+.projects-content-item-container:hover .projects-content-item-image img {
+  transform: scale(1.05);
+}
+
+/* Hover Overlay */
+.projects-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(47, 37, 27, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.projects-content-item-container:hover .projects-hover-overlay {
+  opacity: 1;
+}
+
+.projects-link-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-family: "Archivo", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.2s ease, background 0.2s ease;
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+.projects-content-item-container:hover .projects-link-btn {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.projects-content-item-container:hover .website-btn {
+  transition-delay: 0.1s;
+}
+
+.projects-content-item-container:hover .github-btn {
+  transition-delay: 0.2s;
+}
+
+.website-btn {
+  background: #8cecff;
+  color: #2f251b;
+  border: 2px solid #2f251b;
+}
+
+.website-btn:hover {
+  background: #5dd9f7;
+  transform: translateY(-3px) !important;
+}
+
+.github-btn {
+  background: #2f251b;
+  color: #fff;
+  border: 2px solid #2f251b;
+}
+
+.github-btn:hover {
+  background: #4a3d30;
+  transform: translateY(-3px) !important;
+}
+
+.projects-link-btn svg {
+  width: 24px;
+  height: 24px;
 }
 
 .projects-content-item-description {

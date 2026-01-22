@@ -87,12 +87,13 @@
   box-shadow: 7px 7px #1e1e1e;
 }
 
-.contact-button button {
+.contact-button a {
   background: none;
   border: none;
   font: inherit;
   color: inherit;
   cursor: pointer;
+  text-decoration: none;
 }
 
 /* Mobile (up to 640px) */

@@ -33,17 +33,8 @@ function Landing() {
         />
       </div>
       <div className="rectangle">
-        <div className="rectangle-image">
-        </div>
-
-        <div className="landing-title">
-          <ul>
-            <li>DESIGNER BY CHOICE</li>
-            <li>DEVELOPER BY CAREER</li>
-            <li>DEBUGGER BY CHANCE</li>
-          </ul>
-        </div>
-        <div className="icons">
+        <div className="rectangle-image"></div>
+ <div className="icons">
           <div className="figma-icon">
             <img
               src="https://cdn-us.icons8.com/docs/WXTVKb9hp0elFWZjRc7hOQ/qICglo_FH0Wnvq-RZOmaXA.svg"
@@ -63,11 +54,18 @@ function Landing() {
             />
           </div>
         </div>
+        <div className="landing-title">
+          <ul>
+            <li>DESIGNER BY CHOICE</li>
+            <li>DEVELOPER BY CAREER</li>
+            <li>DEBUGGER BY CHANCE</li>
+          </ul>
+        </div>
+       
         <div className="image">
           <img
-            width="445"
-            height="445"
             src="https://lcdn-us.icons8.com/c/WXTVKb9hp0elFWZjRc7hOQ/fac041fa3855fb2a4ba2350c9156aa710a777fba.png"
+            alt="Profile"
           />
         </div>
         <div className="resume-button">
@@ -76,8 +74,8 @@ function Landing() {
       </div>
       <div className="bottom-container-container">
         <div className="bottom-container">
-          {scrollingSkills.map((skill) => (
-            <p key={skill}>{skill}</p>
+          {scrollingSkills.map((skill, index) => (
+            <p key={index}>{skill}</p>
           ))}
         </div>
       </div>

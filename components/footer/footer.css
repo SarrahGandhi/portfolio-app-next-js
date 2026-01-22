@@ -1,7 +1,36 @@
 .footer {
-    margin-top: 50px;
-    padding: 30px;
-    border-top: 2px solid #000;
-    display: flex;
-    flex-direction: row;
+  margin-top: clamp(30px, 5vw, 50px);
+  padding: clamp(20px, 3vw, 30px);
+  border-top: 2px solid #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.footer p,
+.footer a,
+.footer span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(12px, 1.5vw, 14px);
+  color: #000;
+}
+
+/* Mobile (up to 640px) */
+@media (max-width: 640px) {
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px 15px;
+  }
+}
+
+/* Landscape adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .footer {
+    margin-top: 20px;
+    padding: 15px;
+  }
 }

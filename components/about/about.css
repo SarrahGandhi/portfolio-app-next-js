@@ -1,0 +1,282 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@300..700&family=Inconsolata:wght@200..900&display=swap");
+
+.about-container {
+  padding: 60px clamp(20px, 5vw, 120px);
+  background-color: #fff;
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Hero Section */
+.about-hero {
+  margin-bottom: 60px;
+}
+
+.about-hero-content {
+  max-width: 700px;
+}
+
+.about-label {
+  font-family: "Inconsolata", monospace;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #888;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.about-hero h1 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(42px, 8vw, 72px);
+  line-height: 1.1;
+  margin: 0 0 30px 0;
+  color: #2f251b;
+}
+
+.about-hero h1 .highlight {
+  color: #2f251b;
+  position: relative;
+}
+
+.about-hero h1 .highlight::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: #2f251b;
+  opacity: 0.15;
+  z-index: -1;
+}
+
+.about-intro {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(18px, 2.5vw, 22px);
+  line-height: 1.6;
+  color: #555;
+  margin: 0;
+}
+
+/* Bio Section */
+.about-bio {
+  margin-bottom: 60px;
+  padding: 40px;
+  background: #fafafa;
+  border-radius: 12px;
+}
+
+.about-bio p {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(15px, 1.8vw, 17px);
+  line-height: 1.8;
+  color: #444;
+  margin: 0 0 20px 0;
+}
+
+.about-bio p:last-child {
+  margin-bottom: 0;
+}
+
+/* Skills Section */
+.about-skills {
+  margin-bottom: 60px;
+}
+
+.about-skills h2 {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(24px, 4vw, 32px);
+  margin: 0 0 25px 0;
+  color: #2f251b;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-item {
+  padding: 12px 20px;
+  border: 2px solid #2f251b;
+  border-radius: 50px;
+  font-family: "Inconsolata", monospace;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2f251b;
+  transition: all 0.2s ease;
+  cursor: default;
+}
+
+.skill-item:hover {
+  background: #2f251b;
+  color: #fff;
+}
+
+/* CTA Section */
+.about-cta {
+  background: #2f251b;
+  border-radius: 16px;
+  padding: 50px 40px;
+  text-align: center;
+}
+
+.about-cta p {
+  font-family: "Archivo Black", sans-serif;
+  font-size: clamp(20px, 3vw, 28px);
+  color: #fff;
+  margin: 0 0 25px 0;
+}
+
+.cta-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.cta-link {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  padding: 14px 28px;
+  font-family: "Inconsolata", monospace;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cta-link:hover {
+  background: #fff;
+  color: #2f251b;
+}
+
+.cta-link.secondary {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.cta-link.secondary:hover {
+  background: #fff;
+  color: #2f251b;
+  border-color: #fff;
+}
+
+/* RESPONSIVE STYLES */
+
+/* Mobile Portrait (up to 640px) */
+@media (max-width: 640px) {
+  .about-container {
+    padding: 40px 20px;
+  }
+
+  .about-hero {
+    margin-bottom: 40px;
+  }
+
+  .about-bio {
+    padding: 25px 20px;
+    margin-bottom: 40px;
+  }
+
+  .about-skills {
+    margin-bottom: 40px;
+  }
+
+  .skill-item {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .about-cta {
+    padding: 35px 25px;
+    border-radius: 12px;
+  }
+
+  .cta-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cta-link {
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+  }
+}
+
+/* Mobile Landscape & Small Tablets (641px - 900px) */
+@media (min-width: 641px) and (max-width: 900px) {
+  .about-container {
+    padding: 50px 30px;
+  }
+}
+
+/* Large Desktops (1201px+) */
+@media (min-width: 1201px) {
+  .about-container {
+    padding: 80px 40px;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (orientation: landscape) and (max-height: 500px) {
+  .about-container {
+    padding: 30px 25px;
+  }
+
+  .about-hero {
+    margin-bottom: 30px;
+  }
+
+  .about-bio {
+    padding: 25px;
+    margin-bottom: 30px;
+  }
+
+  .about-skills {
+    margin-bottom: 30px;
+  }
+
+  .about-cta {
+    padding: 30px;
+  }
+}
+
+/* Very small phones (under 380px) */
+@media (max-width: 380px) {
+  .about-container {
+    padding: 30px 16px;
+  }
+
+  .about-hero h1 {
+    font-size: 36px;
+  }
+
+  .about-intro {
+    font-size: 16px;
+  }
+
+  .about-skills h2 {
+    font-size: 22px;
+  }
+
+  .skill-item {
+    padding: 8px 14px;
+    font-size: 12px;
+  }
+
+  .about-cta p {
+    font-size: 18px;
+  }
+
+  .cta-link {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}

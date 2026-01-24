@@ -37,14 +37,14 @@ function Projects() {
             githubUrl: null,
             isInternal: true,
         },
-        {
-            title: "Avro Mobile App",
-            description: "Figma, User Research, Prototyping",
-            thumbnail: "/Placeholder.png",
-            websiteUrl: "/projects/avro-mobile",
-            githubUrl: null,
-            isInternal: true,
-        },
+        // {
+        //     title: "Avro Mobile App",
+        //     description: "Figma, User Research, Prototyping",
+        //     thumbnail: "/Placeholder.png",
+        //     websiteUrl: "/projects/avro-mobile",
+        //     githubUrl: null,
+        //     isInternal: true,
+        // },
         // {
         //     title: "Milestone Manager",
         //     description: "React, Node.js, MongoDB",

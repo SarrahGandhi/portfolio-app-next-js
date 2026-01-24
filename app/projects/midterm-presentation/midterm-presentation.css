@@ -1,0 +1,706 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap');
+
+.midterm-page {
+  min-height: 100vh;
+  background: #faf9f7;
+}
+
+/* Hero Section */
+.midterm-hero {
+  padding: 40px clamp(24px, 6vw, 80px) 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  color: #666;
+  text-decoration: none;
+  margin-bottom: 48px;
+  transition: color 0.2s ease;
+}
+
+.back-link:hover {
+  color: #2f251b;
+}
+
+.hero-content {
+  max-width: 650px;
+}
+
+.midterm-badge {
+  display: inline-block;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  color: #059669;
+  background: #d1fae5;
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(36px, 6vw, 56px);
+  color: #2f251b;
+  margin: 0 0 16px 0;
+  line-height: 1.1;
+}
+
+.hero-content > p {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(16px, 2vw, 18px);
+  color: #666;
+  line-height: 1.6;
+  margin: 0 0 32px 0;
+}
+
+/* Hero Meta */
+.hero-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.meta-label {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.meta-value {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2f251b;
+}
+
+/* ============================================
+   FIGMA PRESENTATION EMBED
+   ============================================ */
+
+.presentation-section {
+  padding: 60px clamp(24px, 6vw, 80px) 80px;
+  background: linear-gradient(135deg, #065f46 0%, #047857 50%, #059669 100%);
+}
+
+.presentation-header {
+  max-width: 1400px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.presentation-header h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 4vw, 32px);
+  color: #fff;
+  margin: 0 0 12px 0;
+}
+
+.presentation-header p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+.figma-embed-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+.figma-iframe {
+  width: 100%;
+  height: 800px;
+  border: none;
+  display: block;
+}
+
+/* ============================================
+   CASE STUDY SECTION
+   ============================================ */
+
+.case-study-section {
+  padding: 80px clamp(24px, 6vw, 80px);
+  background: #fff;
+}
+
+.case-study-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.case-study-block {
+  margin-bottom: 80px;
+}
+
+.case-study-block:last-child {
+  margin-bottom: 0;
+}
+
+.case-study-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.label-number {
+  font-family: "DM Serif Display", serif;
+  font-size: 14px;
+  color: #059669;
+  background: #d1fae5;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-study-label > span:last-child {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #059669;
+}
+
+.case-study-block h2 {
+  font-family: "DM Serif Display", serif;
+  font-size: clamp(24px, 4vw, 32px);
+  color: #2f251b;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+}
+
+.case-study-block > p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0 0 32px 0;
+}
+
+/* Challenge Points */
+.challenge-points {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.challenge-point {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: #faf9f7;
+  border-radius: 12px;
+  border: 1px solid #e8e4df;
+}
+
+.point-icon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.challenge-point div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.challenge-point strong {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #2f251b;
+}
+
+.challenge-point span {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Research Insights */
+.research-insights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.insight-card {
+  background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.insight-stat {
+  font-family: "DM Serif Display", serif;
+  font-size: 42px;
+  color: #047857;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.insight-label {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #4c4c4c;
+  line-height: 1.5;
+  margin: 0 0 12px 0;
+}
+
+.insight-tag {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #059669;
+  background: #fff;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+/* Persona Snippet */
+.persona-snippet {
+  display: flex;
+  gap: 20px;
+  padding: 24px;
+  background: #2f251b;
+  border-radius: 16px;
+  align-items: flex-start;
+}
+
+.persona-avatar {
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.persona-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.persona-name {
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #10b981;
+}
+
+.persona-snippet p {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Solution Principles */
+.solution-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.principle {
+  padding: 28px;
+  background: #faf9f7;
+  border-radius: 16px;
+  border-left: 4px solid #059669;
+}
+
+.principle-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.principle-icon {
+  font-size: 24px;
+}
+
+.principle h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: #2f251b;
+  margin: 0;
+}
+
+.principle p {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Outcomes */
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.outcome-card {
+  background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+  padding: 28px 20px;
+  border-radius: 16px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.outcome-metric {
+  font-family: "DM Serif Display", serif;
+  font-size: 36px;
+  color: #fff;
+}
+
+.outcome-label {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.testimonial {
+  background: #faf9f7;
+  border-left: 4px solid #059669;
+  padding: 24px 28px;
+  margin: 0;
+  border-radius: 0 12px 12px 0;
+}
+
+.testimonial p {
+  font-family: "Inter", sans-serif;
+  font-size: 17px;
+  font-style: italic;
+  color: #2f251b;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+}
+
+.testimonial cite {
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  color: #666;
+}
+
+/* Learnings */
+.learnings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.learning-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.learning-number {
+  font-family: "DM Serif Display", serif;
+  font-size: 20px;
+  color: #059669;
+  background: #d1fae5;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.learning-item > div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.learning-item strong {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2f251b;
+}
+
+.learning-item p {
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ============================================
+   PROCESS SECTION
+   ============================================ */
+
+.process-section {
+  padding: 60px clamp(24px, 6vw, 80px);
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid #e8e4df;
+}
+
+.process-section h2,
+.tools-section h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #999;
+  margin: 0 0 32px 0;
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.process-step {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.step-number {
+  font-family: "DM Serif Display", serif;
+  font-size: 36px;
+  color: #059669;
+  line-height: 1;
+}
+
+.step-content h3 {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2f251b;
+  margin: 0 0 4px 0;
+}
+
+.step-content p {
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* ============================================
+   TOOLS SECTION
+   ============================================ */
+
+.tools-section {
+  padding: 60px clamp(24px, 6vw, 80px);
+  max-width: 900px;
+  margin: 0 auto;
+  border-top: 1px solid #e8e4df;
+}
+
+.tools-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tool-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #2f251b;
+  background: #fff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  border: 1px solid #e8e4df;
+  transition: border-color 0.2s ease;
+}
+
+.tool-item:hover {
+  border-color: #ccc;
+}
+
+.tool-icon {
+  font-size: 18px;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.cta-section {
+  padding: 80px clamp(24px, 6vw, 80px);
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  border-top: 1px solid #e8e4df;
+}
+
+.cta-section p {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 20px 0;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: #fff;
+  background: #2f251b;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.cta-btn:hover {
+  background: #4a3d30;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 900px) {
+  .figma-iframe {
+    height: 600px;
+  }
+}
+
+@media (max-width: 600px) {
+  .midterm-hero {
+    padding: 32px 20px 40px;
+  }
+  
+  .back-link {
+    margin-bottom: 32px;
+  }
+  
+  .hero-meta {
+    gap: 24px;
+  }
+  
+  .presentation-section {
+    padding: 40px 16px 60px;
+  }
+  
+  .presentation-header h2 {
+    font-size: 22px;
+  }
+  
+  .figma-embed-container {
+    border-radius: 12px;
+  }
+  
+  .figma-iframe {
+    height: 500px;
+  }
+  
+  /* Case Study Responsive */
+  .case-study-section {
+    padding: 60px 20px;
+  }
+  
+  .case-study-block {
+    margin-bottom: 60px;
+  }
+  
+  .research-insights {
+    grid-template-columns: 1fr;
+  }
+  
+  .insight-stat {
+    font-size: 36px;
+  }
+  
+  .persona-snippet {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+  
+  .outcomes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .outcome-metric {
+    font-size: 28px;
+  }
+  
+  .learning-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .process-section,
+  .tools-section {
+    padding: 40px 20px;
+  }
+  
+  .process-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .cta-section {
+    padding: 60px 20px;
+  }
+}
+
+@media (max-width: 400px) {
+  .process-steps {
+    grid-template-columns: 1fr;
+  }
+  
+  .figma-iframe {
+    height: 400px;
+  }
+}

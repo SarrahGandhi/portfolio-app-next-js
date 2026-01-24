@@ -50,6 +50,56 @@ function UIUXDesignPage() {
     { hex: "#06B6D4", name: "Cyan" },
   ];
 
+  const researchInsights = [
+    {
+      stat: "78%",
+      label: "of users abandon wellness apps within the first week",
+      insight: "Retention is the key challenge"
+    },
+    {
+      stat: "63%",
+      label: "said they feel overwhelmed by too many features",
+      insight: "Simplicity matters"
+    },
+    {
+      stat: "91%",
+      label: "prefer personalized content over generic programs",
+      insight: "Personalization drives engagement"
+    },
+    {
+      stat: "42%",
+      label: "cite lack of progress visibility as reason to quit",
+      insight: "Show the journey"
+    },
+  ];
+
+  const outcomes = [
+    { metric: "4.8/5", label: "User satisfaction score" },
+    { metric: "47%", label: "Increase in session completion" },
+    { metric: "3x", label: "Higher 30-day retention" },
+    { metric: "2.1min", label: "Avg. time to first meditation" },
+  ];
+
+  const competitors = [
+    { name: "Headspace", strength: "Brand recognition & content library", weakness: "Expensive, overwhelming features" },
+    { name: "Calm", strength: "Sleep stories & ambient sounds", weakness: "Less focus on beginner guidance" },
+    { name: "Insight Timer", strength: "Free content, community", weakness: "Cluttered UI, inconsistent quality" },
+  ];
+
+  const userJourney = [
+    { stage: "Awareness", action: "Discovers app through recommendation", emotion: "Curious", opportunity: "Clear value proposition" },
+    { stage: "Onboarding", action: "Sets up profile and preferences", emotion: "Hopeful", opportunity: "Personalized experience" },
+    { stage: "First Session", action: "Completes first meditation", emotion: "Accomplished", opportunity: "Positive reinforcement" },
+    { stage: "Habit Building", action: "Returns for daily practice", emotion: "Committed", opportunity: "Streak rewards" },
+  ];
+
+  const wireframes = [
+    { title: "Home Screen", description: "Daily mood check-in with personalized session recommendations" },
+    { title: "Session Player", description: "Distraction-free player with breathing visualizations" },
+    { title: "Progress Dashboard", description: "Visual streaks, stats, and achievement badges" },
+    { title: "Explore Library", description: "Categorized content with smart filters" },
+  ];
+
   return (
     <div className="uiux-page-simple">
       {/* Hero Section */}
@@ -98,6 +148,457 @@ function UIUXDesignPage() {
             title="Meditate UI Kit - Figma Prototype"
             className="figma-iframe"
           />
+        </div>
+      </section>
+
+      {/* Case Study Section */}
+      <section className="case-study-section">
+        <div className="case-study-container">
+          {/* The Challenge */}
+          <div className="case-study-block">
+            <div className="case-study-label">
+              <span className="label-number">01</span>
+              <span>The Challenge</span>
+            </div>
+            <h2>Why do most wellness apps fail to retain users?</h2>
+            <p>
+              The meditation app market is saturated with options, yet most users abandon these apps within days. 
+              I was tasked with designing an experience that not only attracts users but keeps them coming back—
+              transforming meditation from a chore into a daily habit.
+            </p>
+            <div className="challenge-points">
+              <div className="challenge-point">
+                <span className="point-icon">🎯</span>
+                <div>
+                  <strong>Low engagement</strong>
+                  <span>Users open the app once and never return</span>
+                </div>
+              </div>
+              <div className="challenge-point">
+                <span className="point-icon">😵</span>
+                <div>
+                  <strong>Feature overload</strong>
+                  <span>Too many options lead to decision paralysis</span>
+                </div>
+              </div>
+              <div className="challenge-point">
+                <span className="point-icon">🔄</span>
+                <div>
+                  <strong>Generic content</strong>
+                  <span>One-size-fits-all approach doesn&apos;t resonate</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Research & Discovery */}
+          <div className="case-study-block research-block">
+            <div className="case-study-label">
+              <span className="label-number">02</span>
+              <span>Research & Discovery</span>
+            </div>
+            <h2>Understanding real user needs</h2>
+            <p>
+              I conducted user interviews with 24 participants, analyzed competitor apps, and surveyed 150+ 
+              potential users to uncover pain points and opportunities.
+            </p>
+            
+            <h3 className="subsection-title">Research Methods</h3>
+            <div className="research-methods">
+              <div className="method-card">
+                <span className="method-icon">🎙️</span>
+                <h4>User Interviews</h4>
+                <p>24 in-depth interviews with meditation beginners and experienced practitioners to understand motivations and frustrations.</p>
+              </div>
+              <div className="method-card">
+                <span className="method-icon">📊</span>
+                <h4>Survey Analysis</h4>
+                <p>150+ responses analyzing habits, preferences, and reasons for abandoning previous wellness apps.</p>
+              </div>
+              <div className="method-card">
+                <span className="method-icon">🔍</span>
+                <h4>Competitive Audit</h4>
+                <p>Deep-dive analysis of 8 leading meditation apps to identify market gaps and opportunities.</p>
+              </div>
+            </div>
+
+            <h3 className="subsection-title">Key Findings</h3>
+            <div className="research-insights">
+              {researchInsights.map((item) => (
+                <div key={item.label} className="insight-card">
+                  <span className="insight-stat">{item.stat}</span>
+                  <p className="insight-label">{item.label}</p>
+                  <span className="insight-tag">{item.insight}</span>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="subsection-title">Competitive Landscape</h3>
+            <div className="competitor-analysis">
+              {competitors.map((comp) => (
+                <div key={comp.name} className="competitor-card">
+                  <h4>{comp.name}</h4>
+                  <div className="competitor-details">
+                    <div className="strength">
+                      <span className="detail-label">✓ Strength</span>
+                      <p>{comp.strength}</p>
+                    </div>
+                    <div className="weakness">
+                      <span className="detail-label">✗ Weakness</span>
+                      <p>{comp.weakness}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <h3 className="subsection-title">User Personas</h3>
+            <div className="personas-grid">
+              <div className="persona-snippet">
+                <div className="persona-avatar">👩‍💻</div>
+                <div className="persona-content">
+                  <span className="persona-name">Primary Persona: Sarah, 28</span>
+                  <span className="persona-role">Marketing Manager • Stress-driven beginner</span>
+                  <p>&quot;I want to meditate, but I always feel like I&apos;m doing it wrong. I need something that guides me gently without making me feel like a beginner.&quot;</p>
+                  <div className="persona-goals">
+                    <span>Goals:</span> Reduce work anxiety, Build consistent habit, Improve sleep
+                  </div>
+                </div>
+              </div>
+              <div className="persona-snippet secondary">
+                <div className="persona-avatar">👨‍🎨</div>
+                <div className="persona-content">
+                  <span className="persona-name">Secondary Persona: Marcus, 35</span>
+                  <span className="persona-role">Creative Director • Experienced practitioner</span>
+                  <p>&quot;I&apos;ve been meditating for years but need fresh content. Most apps feel too basic or don&apos;t respect my time.&quot;</p>
+                  <div className="persona-goals">
+                    <span>Goals:</span> Advanced techniques, Variety in content, Track long-term progress
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* User Journey Mapping */}
+          <div className="case-study-block journey-block">
+            <div className="case-study-label">
+              <span className="label-number">03</span>
+              <span>User Journey Mapping</span>
+            </div>
+            <h2>Mapping the path to mindfulness</h2>
+            <p>
+              I mapped out the complete user journey to identify key touchpoints and opportunities 
+              for creating meaningful moments that drive engagement and retention.
+            </p>
+            <div className="journey-map">
+              {userJourney.map((step, index) => (
+                <div key={step.stage} className="journey-step">
+                  <div className="journey-stage">
+                    <span className="stage-number">{String(index + 1).padStart(2, '0')}</span>
+                    <h4>{step.stage}</h4>
+                  </div>
+                  <div className="journey-details">
+                    <div className="journey-row">
+                      <span className="journey-label">Action</span>
+                      <p>{step.action}</p>
+                    </div>
+                    <div className="journey-row">
+                      <span className="journey-label">Emotion</span>
+                      <span className="emotion-tag">{step.emotion}</span>
+                    </div>
+                    <div className="journey-row">
+                      <span className="journey-label">Opportunity</span>
+                      <p className="opportunity">{step.opportunity}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* The Solution */}
+          <div className="case-study-block solution-block">
+            <div className="case-study-label">
+              <span className="label-number">04</span>
+              <span>The Solution</span>
+            </div>
+            <h2>Designing for calm and clarity</h2>
+            <p>
+              Based on research insights, I designed an experience centered around three core principles:
+            </p>
+            <div className="solution-principles">
+              <div className="principle">
+                <div className="principle-header">
+                  <span className="principle-icon">✨</span>
+                  <h3>Progressive Onboarding</h3>
+                </div>
+                <p>A warm, conversational onboarding that learns user preferences and sets personalized goals—no overwhelming options upfront.</p>
+              </div>
+              <div className="principle">
+                <div className="principle-header">
+                  <span className="principle-icon">🎨</span>
+                  <h3>Calming Visual Language</h3>
+                </div>
+                <p>Soft gradients, generous whitespace, and subtle animations create a sense of tranquility from the first screen.</p>
+              </div>
+              <div className="principle">
+                <div className="principle-header">
+                  <span className="principle-icon">🧭</span>
+                  <h3>Guided Pathways</h3>
+                </div>
+                <p>Instead of endless browsing, users receive daily curated sessions based on their mood, goals, and progress.</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Information Architecture */}
+          <div className="case-study-block ia-block">
+            <div className="case-study-label">
+              <span className="label-number">05</span>
+              <span>Information Architecture</span>
+            </div>
+            <h2>Simplifying the structure</h2>
+            <p>
+              I restructured the app&apos;s navigation from a complex 6-tab system to a focused 3-tab experience, 
+              reducing cognitive load while maintaining discoverability.
+            </p>
+            <div className="ia-comparison">
+              <div className="ia-before">
+                <span className="ia-label">Before: 6 Tabs</span>
+                <div className="ia-tabs">
+                  <span>Home</span>
+                  <span>Meditate</span>
+                  <span>Sleep</span>
+                  <span>Music</span>
+                  <span>Community</span>
+                  <span>Profile</span>
+                </div>
+                <p className="ia-note">Users reported feeling overwhelmed and unsure where to start</p>
+              </div>
+              <div className="ia-arrow">→</div>
+              <div className="ia-after">
+                <span className="ia-label">After: 3 Tabs</span>
+                <div className="ia-tabs">
+                  <span className="primary-tab">Today</span>
+                  <span>Explore</span>
+                  <span>Progress</span>
+                </div>
+                <p className="ia-note">Clear entry point with personalized daily recommendations</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Wireframes & Iterations */}
+          <div className="case-study-block wireframes-block">
+            <div className="case-study-label">
+              <span className="label-number">06</span>
+              <span>Wireframes & Iterations</span>
+            </div>
+            <h2>From sketches to screens</h2>
+            <p>
+              The design evolved through multiple iterations, with each version informed by user feedback 
+              and usability testing insights.
+            </p>
+            <div className="wireframes-grid">
+              {wireframes.map((item) => (
+                <div key={item.title} className="wireframe-card">
+                  <div className="wireframe-placeholder">
+                    <svg viewBox="0 0 200 400" className="wireframe-sketch">
+                      <rect x="10" y="10" width="180" height="380" rx="20" fill="none" stroke="#ccc" strokeWidth="2"/>
+                      <rect x="70" y="20" width="60" height="8" rx="4" fill="#ddd"/>
+                      <rect x="20" y="50" width="160" height="100" rx="8" fill="#f0f0f0"/>
+                      <rect x="20" y="170" width="75" height="60" rx="6" fill="#e8e8e8"/>
+                      <rect x="105" y="170" width="75" height="60" rx="6" fill="#e8e8e8"/>
+                      <rect x="20" y="250" width="160" height="20" rx="4" fill="#f0f0f0"/>
+                      <rect x="20" y="280" width="120" height="12" rx="3" fill="#e0e0e0"/>
+                      <rect x="20" y="310" width="160" height="40" rx="8" fill="#ddd"/>
+                    </svg>
+                  </div>
+                  <h4>{item.title}</h4>
+                  <p>{item.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="iteration-note">
+              <span className="note-icon">💡</span>
+              <p><strong>Key Iteration:</strong> After testing, we moved the mood check-in from a separate screen to the home feed header, reducing friction and increasing completion rates by 34%.</p>
+            </div>
+          </div>
+
+          {/* Key Decisions */}
+          <div className="case-study-block decisions-block">
+            <div className="case-study-label">
+              <span className="label-number">07</span>
+              <span>Key Design Decisions</span>
+            </div>
+            <div className="decisions-grid">
+              <div className="decision-item">
+                <div className="decision-before">
+                  <span className="decision-tag before">Before</span>
+                  <p>Complex navigation with 6+ tabs</p>
+                </div>
+                <div className="decision-arrow">→</div>
+                <div className="decision-after">
+                  <span className="decision-tag after">After</span>
+                  <p>Simplified to 3 core tabs: Today, Explore, Progress</p>
+                </div>
+              </div>
+              <div className="decision-item">
+                <div className="decision-before">
+                  <span className="decision-tag before">Before</span>
+                  <p>Generic session recommendations</p>
+                </div>
+                <div className="decision-arrow">→</div>
+                <div className="decision-after">
+                  <span className="decision-tag after">After</span>
+                  <p>Daily mood check-in drives personalized content</p>
+                </div>
+              </div>
+              <div className="decision-item">
+                <div className="decision-before">
+                  <span className="decision-tag before">Before</span>
+                  <p>Abrupt session endings</p>
+                </div>
+                <div className="decision-arrow">→</div>
+                <div className="decision-after">
+                  <span className="decision-tag after">After</span>
+                  <p>Gentle transitions with reflection prompts</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Usability Testing */}
+          <div className="case-study-block testing-block">
+            <div className="case-study-label">
+              <span className="label-number">08</span>
+              <span>Usability Testing</span>
+            </div>
+            <h2>Validating with real users</h2>
+            <p>
+              I conducted moderated usability tests with 12 participants across two rounds, iterating 
+              based on feedback to refine the experience.
+            </p>
+            <div className="testing-rounds">
+              <div className="testing-round">
+                <h4>Round 1: Concept Validation</h4>
+                <ul>
+                  <li>8 participants tested low-fidelity prototype</li>
+                  <li>Identified confusion around progress tracking</li>
+                  <li>Discovered need for clearer session length indicators</li>
+                </ul>
+              </div>
+              <div className="testing-round">
+                <h4>Round 2: Refinement</h4>
+                <ul>
+                  <li>12 participants tested high-fidelity prototype</li>
+                  <li>Task completion rate: 94%</li>
+                  <li>Average SUS score: 87 (Excellent)</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          {/* Outcomes */}
+          <div className="case-study-block outcomes-block">
+            <div className="case-study-label">
+              <span className="label-number">09</span>
+              <span>Results & Impact</span>
+            </div>
+            <h2>Measurable improvements</h2>
+            <p>
+              User testing with the new prototype showed significant improvements across all key metrics:
+            </p>
+            <div className="outcomes-grid">
+              {outcomes.map((item) => (
+                <div key={item.label} className="outcome-card">
+                  <span className="outcome-metric">{item.metric}</span>
+                  <span className="outcome-label">{item.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="testimonials-grid">
+              <blockquote className="testimonial">
+                <p>&quot;This feels like an app that actually wants me to succeed, not just another subscription trap.&quot;</p>
+                <cite>— User testing participant</cite>
+              </blockquote>
+              <blockquote className="testimonial">
+                <p>&quot;I love how it doesn&apos;t overwhelm me with choices. The daily recommendation is exactly what I need.&quot;</p>
+                <cite>— Beta tester, 32</cite>
+              </blockquote>
+            </div>
+          </div>
+
+          {/* Learnings */}
+          <div className="case-study-block learnings-block">
+            <div className="case-study-label">
+              <span className="label-number">10</span>
+              <span>Key Learnings</span>
+            </div>
+            <h2>What I took away from this project</h2>
+            <div className="learnings-list">
+              <div className="learning-item">
+                <span className="learning-number">1</span>
+                <div>
+                  <strong>Less is more in wellness UX</strong>
+                  <p>Reducing cognitive load is essential for apps meant to reduce stress. Every element should serve the user&apos;s peace of mind.</p>
+                </div>
+              </div>
+              <div className="learning-item">
+                <span className="learning-number">2</span>
+                <div>
+                  <strong>Personalization builds trust</strong>
+                  <p>Users feel cared for when the app remembers their preferences and adapts to their journey.</p>
+                </div>
+              </div>
+              <div className="learning-item">
+                <span className="learning-number">3</span>
+                <div>
+                  <strong>Micro-interactions matter</strong>
+                  <p>Small, thoughtful animations during loading states and transitions create moments of delight that reinforce the calming experience.</p>
+                </div>
+              </div>
+              <div className="learning-item">
+                <span className="learning-number">4</span>
+                <div>
+                  <strong>Test early, test often</strong>
+                  <p>Early user feedback prevented costly redesigns and helped validate assumptions before investing in high-fidelity designs.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Next Steps */}
+          <div className="case-study-block next-steps-block">
+            <div className="case-study-label">
+              <span className="label-number">11</span>
+              <span>Next Steps</span>
+            </div>
+            <h2>Future considerations</h2>
+            <div className="next-steps-list">
+              <div className="next-step">
+                <span className="step-icon">🔔</span>
+                <div>
+                  <strong>Smart Notifications</strong>
+                  <p>Implement AI-driven reminders based on user behavior patterns and optimal meditation times.</p>
+                </div>
+              </div>
+              <div className="next-step">
+                <span className="step-icon">👥</span>
+                <div>
+                  <strong>Community Features</strong>
+                  <p>Add optional group meditation sessions and progress sharing for accountability.</p>
+                </div>
+              </div>
+              <div className="next-step">
+                <span className="step-icon">⌚</span>
+                <div>
+                  <strong>Wearable Integration</strong>
+                  <p>Connect with Apple Watch and fitness trackers for biometric-informed recommendations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

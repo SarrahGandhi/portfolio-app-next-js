@@ -67,9 +67,7 @@ function About() {
       <section className="about-cta">
         <p>Let&apos;s build something together</p>
         <div className="cta-links">
-          <Link href="/projects" className="cta-link">
-            View Work
-          </Link>
+          
           <Link href="/resume" className="cta-link secondary">
             Resume
           </Link>

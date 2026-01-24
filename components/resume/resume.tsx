@@ -226,7 +226,7 @@ function Resume() {
               GitHub
             </a>
             <a
-              href="https://linkedin.com/in/sarrahgandhi"
+              href="https://linkedin.com/in/sarrah-gandhi"
               target="_blank"
               rel="noopener noreferrer"
               className="social-link"

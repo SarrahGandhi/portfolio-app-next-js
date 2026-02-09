@@ -3,7 +3,7 @@ import { Anton, Roboto_Flex } from 'next/font/google';
 
 
 import 'lenis/dist/lenis.css';
-import './globals.css';
+import '../globals.css';
 import Footer from '@/components/footer/footer';
 // import ScrollProgressIndicator from '../components/ScrollProgressIndicator';
 // import ParticleBackground from '../components/ParticleBackground';
@@ -60,7 +60,7 @@ export default function RootLayout({
                         duration: 1.4,
                     }}
                 > */}
-                    {/* <a
+                {/* <a
                         href="https://forms.gle/t73XYJgWD5cJNr6e8"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -69,12 +69,12 @@ export default function RootLayout({
                         Frontend dev? I&apos;ll help you polish your resume —
                         completely free.
                     </a> */}
-                    <Navbar />
-                    <main>{children}</main>
-                    <Footer />
+                <Navbar />
+                <main>{children}</main>
+                <Footer />
 
-                    <CustomCursor />
-                    {/* <Preloader />
+                <CustomCursor />
+                {/* <Preloader />
                     <ScrollProgressIndicator />
                     <ParticleBackground />
                    

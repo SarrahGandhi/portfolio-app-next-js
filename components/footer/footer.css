@@ -6,7 +6,7 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 
 .footer p,
@@ -17,6 +17,7 @@
   color: #000;
   text-align: center;
 }
+
 .footer-title {
   display: flex;
   flex-direction: column;
@@ -24,10 +25,12 @@
   gap: 10px;
   text-align: center;
 }
-.footer-subtitle{
+
+.footer-subtitle {
   flex-direction: column;
   gap: 1px;
 }
+
 /* Tablet (641px - 900px) */
 @media (max-width: 900px) {
   .footer {
@@ -43,7 +46,7 @@
     padding: 20px 15px;
     margin-top: 30px;
   }
-  
+
   .footer p,
   .footer a,
   .footer span {
@@ -57,7 +60,7 @@
     padding: 15px 12px;
     margin-top: 20px;
   }
-  
+
   .footer p,
   .footer a,
   .footer span {

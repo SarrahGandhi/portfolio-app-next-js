@@ -1,0 +1,70 @@
+/* Experiences.css */
+
+.experiences {
+  /* replaces py-section */
+  padding: 120px 0;
+}
+
+.experiences__container {
+  /* replaces container */
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* replaces grid gap-14 */
+.experiences__list {
+  display: grid;
+  gap: 56px;
+}
+
+/* animation (replaces transition-all duration-700 ease-out + translate/opacity) */
+.experience-item {
+  transform: translateY(48px);
+  opacity: 0;
+  transition: transform 700ms ease-out, opacity 700ms ease-out;
+  will-change: transform, opacity;
+}
+
+.experience-item.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* text styles */
+.experience-item__company {
+  margin: 0;
+  font-size: 20px;
+  /* ~text-xl */
+  color: var(--muted-foreground);
+}
+
+.experience-item__title {
+  margin: 14px 0 10px;
+  /* ~mt-3.5 mb-2.5 */
+  font-size: clamp(2.25rem, 4vw, 3.125rem);
+  /* ~text-5xl */
+  line-height: 1;
+  /* ~leading-none */
+  font-weight: 400;
+
+  /* if you still want Anton, ensure it's loaded in your app */
+  font-family: Anton, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.experience-item__duration {
+  margin: 0;
+  font-size: 18px;
+  /* ~text-lg */
+  color: var(--muted-foreground);
+}
+
+/* responsive padding */
+@media (max-width: 768px) {
+  .experiences {
+    padding: 80px 0;
+  }
+
+  .experiences__list {
+    gap: 36px;
+  }
+}

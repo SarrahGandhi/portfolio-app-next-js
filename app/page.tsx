@@ -4,13 +4,13 @@
 
 import Image from "next/image";
 import Navbar from "@/components/navbar/navbar";
-import Landing from "@/components/landing/landing";
+import Landing from "@/components/landing/Banner";
 // import Highlights from "@/components/highlights/highlights";
 import Projects from "@/components/projects/projects";
 // import Contact from "@/components/contact/contact";
-import About from "@/components/about/about";
-import Stack from "@/components/stack/stack";
-import Experience from "@/components/Experience/experience";
+import About from "@/components/about/AboutMe";
+import Skills from "@/components/stack/Skills";
+import Experiences from "@/components/Experience/Experiences";
 import Footer from "@/components/footer/footer";
 import { useSmoothSectionScroll } from "@/hooks/useSmoothSectionScroll";
 
@@ -35,8 +35,8 @@ export default function Home() {
       <div className="landing-container">
         <Landing />
         <About />
-        <Stack />
-        <Experience />
+        <Skills />
+        <Experiences />
         <Projects />
         {/* <Highlights />
         <Contact /> */}

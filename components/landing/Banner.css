@@ -1,0 +1,164 @@
+/* Banner.css */
+
+/* Outer wrapper */
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Container (replaces Tailwind "container ... flex ... h-[100svh]") */
+.banner__container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+
+  min-height: 530px;
+  height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 0;
+}
+
+/* Left column */
+.banner__left {
+  max-width: 544px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+/* Typography */
+.banner__title {
+  line-height: 0.95;
+  font-weight: 700;
+  margin: 0;
+
+  /* similar to text-6xl / sm:text-[80px] */
+  font-size: clamp(3rem, 6vw, 80px);
+
+  /* Tailwind had transition-all duration-100 */
+  transition: transform 100ms linear, opacity 100ms linear;
+  will-change: transform, opacity;
+}
+
+/* Replace text-primary */
+.banner__primary {
+  color: var(--primary);
+}
+
+/* Replace ml-4 */
+.banner__indent {
+  margin-left: 16px;
+}
+
+/* Description */
+.banner__description {
+  margin-top: 24px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+
+  transition: transform 100ms linear, opacity 100ms linear;
+  will-change: transform, opacity;
+}
+
+.banner__name {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+/* CTA (replaces Button + mt-9) */
+.banner__cta {
+  margin-top: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 12px 18px;
+  border-radius: 999px;
+
+  background: var(--primary);
+  color: var(--primary-foreground);
+  text-decoration: none;
+  font-weight: 600;
+
+  transition:
+    transform 100ms linear,
+    opacity 100ms linear,
+    filter 150ms ease;
+  will-change: transform, opacity;
+}
+
+.banner__cta:hover {
+  filter: brightness(1.05);
+}
+
+/* Stats block (replaces md:absolute bottom/right + md:flex-col) */
+.banner__stats {
+  display: flex;
+  gap: 16px;
+  text-align: center;
+
+  transition: transform 100ms linear, opacity 100ms linear;
+}
+
+/* Each stat */
+.banner__stat {
+  transition: transform 100ms linear, opacity 100ms linear;
+  will-change: transform, opacity;
+}
+
+.banner__statValue {
+  margin: 0 0 6px;
+  font-weight: 400;
+
+  /* similar to text-3xl sm:text-4xl */
+  font-size: clamp(1.875rem, 3vw, 2.25rem);
+
+  color: var(--primary);
+}
+
+.banner__statLabel {
+  margin: 0;
+  color: var(--muted-foreground);
+}
+
+/* Responsive behavior (replaces max-md:flex-col + padding bottom) */
+@media (max-width: 768px) {
+  .banner__container {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-bottom: 40px;
+    /* max-md:pb-10 */
+    gap: 28px;
+  }
+
+  .banner__stats {
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 22px;
+  }
+}
+
+/* Desktop behavior: position stats bottom-right like your Tailwind md:absolute */
+@media (min-width: 768px) {
+  .banner__container {
+    position: relative;
+  }
+
+  .banner__stats {
+    position: absolute;
+    bottom: 10%;
+    right: 4%;
+
+    flex-direction: column;
+    gap: 32px;
+    text-align: right;
+  }
+}

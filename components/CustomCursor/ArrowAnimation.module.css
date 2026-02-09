@@ -1,0 +1,33 @@
+@keyframes drawArrow {
+    0% {
+      stroke-dashoffset: var(--path-length);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    40% {
+      stroke-dashoffset: 0;
+    }
+    50% {
+      fill: rgba(255, 255, 255, 0.03);
+    }
+    80% {
+      transform: translateY(300px);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(300px);
+    }
+  }
+  
+  .arrow-svg {
+    animation: drawArrow 6s infinite;
+    fill: transparent;
+  }
+  
+  .arrow-path {
+    stroke-dasharray: var(--path-length);
+    stroke-dashoffset: var(--path-length);
+    animation: inherit;
+  }

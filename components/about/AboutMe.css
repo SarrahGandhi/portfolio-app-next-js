@@ -1,0 +1,92 @@
+/* AboutMe.css */
+
+.about {
+  padding-bottom: 120px;
+  /* replace pb-section */
+}
+
+.about__container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+/* Headline */
+.about__headline {
+  font-weight: 300;
+  line-height: 1.05;
+  font-size: clamp(2rem, 3.8vw, 3.75rem);
+  /* ~32px to ~60px */
+  margin: 0 0 80px;
+}
+
+/* "This is me." line */
+.about__subline {
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.14);
+  color: rgba(255, 255, 255, 0.638);
+  margin: 0;
+}
+
+/* Layout */
+.about__grid {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 32px;
+  margin-top: 36px;
+}
+
+.about__left {
+  display: flex;
+  align-items: flex-start;
+}
+
+.about__intro {
+  font-size: clamp(2rem, 3.2vw, 3.125rem);
+  /* ~32px to ~50px */
+  margin: 0;
+}
+
+.about__right {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.about__body {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+  max-width: 450px;
+}
+
+.about__bodySpacing {
+  margin-top: 12px;
+}
+
+/* Animation (replaces Tailwind transition + translate + opacity) */
+.fade-slide {
+  transform: translateY(144px);
+  opacity: 0;
+  transition: transform 700ms ease-out, opacity 700ms ease-out;
+  will-change: transform, opacity;
+}
+
+.fade-slide.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Responsive: stack on smaller screens */
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .about__headline {
+    margin-bottom: 48px;
+  }
+
+  .about__body {
+    max-width: 100%;
+  }
+}

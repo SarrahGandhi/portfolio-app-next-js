@@ -1,150 +1,219 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from "react";
-import "./projects.css";
+import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
-interface Project {
-    title: string;
-    description: string;
-    techStack: string;
-    imageUrl: string;
-    liveUrl?: string;
-    githubUrl?: string;
+import TransitionLink from '@/components/TransitionLink';
+import SectionTitle from '@/components/SectionTitle';
+import { PROJECTS } from '@/lib/data';
+import { IProject } from '@/types';
+import './projects.css';
+
+interface ProjectProps {
+  index: number;
+  project: IProject;
+  selectedProject: string | null;
+  onMouseEnter: (slug: string) => void;
 }
 
-function Projects() {
-    const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    const titleRef = useRef<HTMLDivElement | null>(null);
+const ProjectItem = ({ index, project, selectedProject, onMouseEnter }: ProjectProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [animationPhase, setAnimationPhase] = useState(0);
+  const arrowLineRef = useRef<SVGPathElement>(null);
+  const arrowCurbRef = useRef<SVGPathElement>(null);
+  const boxRef = useRef<SVGPathElement>(null);
+  const animationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-    useEffect(() => {
-        const container = containerRef.current;
-        const title = titleRef.current;
-        
-        if (!container || !title) return;
+  useEffect(() => {
+    if (isHovered) {
+      const phases = [
+        () => setAnimationPhase(1), // Show box
+        () => setAnimationPhase(2), // Show arrow line
+        () => setAnimationPhase(3), // Show arrow curb
+        () => setAnimationPhase(4), // Hide all
+        () => setAnimationPhase(0), // Reset
+      ];
 
-        const projectItems = Array.from(
-            container.querySelectorAll<HTMLElement>('.project-item')
-        );
+      let currentPhase = 0;
 
-        // Check for reduced motion preference
-        const reduceMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false;
-
-        if (reduceMotion) {
-            title.classList.add('revealed');
-            projectItems.forEach(el => el.classList.add('revealed'));
-            return;
+      const runPhase = () => {
+        if (currentPhase < phases.length && isHovered) {
+          phases[currentPhase]();
+          currentPhase++;
+          animationRef.current = setTimeout(
+            runPhase,
+            currentPhase === 4 ? 1000 : 200,
+          );
+        } else if (isHovered) {
+          currentPhase = 0;
+          animationRef.current = setTimeout(runPhase, 1000);
         }
+      };
 
-        // Set stagger delays
-        projectItems.forEach((item, index) => {
-            item.style.setProperty('--reveal-delay', `${index * 0.1 + 0.2}s`);
-        });
+      animationRef.current = setTimeout(runPhase, 100);
+    } else {
+      if (animationRef.current) clearTimeout(animationRef.current);
+      setAnimationPhase(0);
+    }
 
-        const handleScroll = () => {
-            const rect = container.getBoundingClientRect();
-            const windowHeight = window.innerHeight;
-            
-            // Trigger when section is 40% visible
-            const isVisible = rect.top < windowHeight * 0.6 && rect.bottom > windowHeight * 0.4;
-            
-            if (isVisible) {
-                title.classList.add('revealed');
-                projectItems.forEach(el => el.classList.add('revealed'));
-            }
-        };
+    return () => {
+      if (animationRef.current) clearTimeout(animationRef.current);
+    };
+  }, [isHovered]);
 
-        handleScroll(); // Check initial position
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        window.addEventListener('resize', handleScroll, { passive: true });
+  useEffect(() => {
+    if (arrowLineRef.current && arrowCurbRef.current && boxRef.current) {
+      const boxLength = boxRef.current.getTotalLength();
+      const arrowLineLength = arrowLineRef.current.getTotalLength();
+      const arrowCurbLength = arrowCurbRef.current.getTotalLength();
 
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-            window.removeEventListener('resize', handleScroll);
-        };
-    }, []);
-    
-    const projects: Project[] = [
-        {
-            title: "Milestone Manager",
-            description: "Project management app with milestone tracking",
-            techStack: "React, Node.js, Supabase",
-            imageUrl: "/milestone-manager.png",
-            liveUrl: "https://wedding.sarrahgandhi.com/admin",
-            githubUrl: "https://github.com/SarrahGandhi/milestone-manager-react",
-        },
-        {
-            title: "Bullet Journal",
-            description: "Digital bullet journal for productivity",
-            techStack: "React, Node.js, Supabase", 
-            imageUrl: "/images/bullet-journal.jpg",
-            liveUrl: "https://journal.sarrahgandhi.com",
-            githubUrl: "https://github.com/SarrahGandhi/bullet-journal-react",
-        },
-        
-    ]
-    
-    return (
-        <section className="projects" id="my-projects">
-            <div className="projects__container" ref={containerRef}>
-                <div className="projects-title-container">
-                    <div className="projects-title" ref={titleRef}>PROJECTS</div>
-                </div>
-                
-                <div className="projects__grid">
-                    {projects.map((project, index) => (
-                        <div 
-                            key={index}
-                            className="project-item"
-                            onMouseEnter={() => setHoveredProject(project)}
-                            onMouseLeave={() => setHoveredProject(null)}
-                        >
-                            <p className="project-tech">{project.techStack}</p>
-                            <p className="project-title">{project.title}</p>
-                            <p className="project-description">{project.description}</p>
-                            <div className="project-buttons">
-                                {project.liveUrl && (
-                                    <button 
-                                        className="project-btn project-btn-live"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                                        }}
-                                    >
-                                        View Live Site
-                                    </button>
-                                )}
-                                {project.githubUrl && (
-                                    <button 
-                                        className="project-btn project-btn-github"
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            window.open(project.githubUrl, '_blank', 'noopener,noreferrer');
-                                        }}
-                                    >
-                                        View Code
-                                    </button>
-                                )}
-                            </div>
-                        </div>
-                    ))}
-                </div>
-                
-                {/* Hover image display */}
-                <div className={`project-image-hover ${hoveredProject ? 'visible' : ''}`}>
-                    {hoveredProject && (
-                        <>
-                            {/* <img 
-                                src={hoveredProject.imageUrl} 
-                                alt="Project preview"
-                                className="project-hover-img"
-                            /> */}
-                        </>
-                    )}
-                </div>
-            </div>
-        </section>
-    );
-}
+      boxRef.current.style.strokeDasharray = boxLength.toString();
+      arrowLineRef.current.style.strokeDasharray = arrowLineLength.toString();
+      arrowCurbRef.current.style.strokeDasharray = arrowCurbLength.toString();
+
+      // Start hidden
+      boxRef.current.style.strokeDashoffset = '100%';
+      arrowLineRef.current.style.strokeDashoffset = '100%';
+      arrowCurbRef.current.style.strokeDashoffset = '100%';
+    }
+  }, []);
+
+  const handleMouseEnter = () => {
+    onMouseEnter(project.link);
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => setIsHovered(false);
+
+  const indexText = `_${(index + 1).toString().padStart(2, '0')}.`;
+
+  const fadeClass =
+    selectedProject !== null && selectedProject !== project.slug
+      ? 'project-item--faded'
+      : '';
+
+  return (
+    <TransitionLink
+      href={project.link as any}
+      className={`project-item ${fadeClass}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* {selectedProject === null && (
+        <Image
+          src={project.thumbnail}
+          alt="Project"
+          width={300}
+          height={200}
+          className="project-item__thumb"
+          loading="lazy"
+        />
+      )} */}
+
+      <div className="project-item__row">
+        <div className="project-item__index">{indexText}</div>
+
+        <div className="project-item__content">
+          <h4 className="project-item__title">
+            {project.title}
+
+            <span
+              className={`project-item__icon ${isHovered ? 'is-visible' : ''
+                }`}
+              aria-hidden="true"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="36"
+                height="36"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path
+                  ref={boxRef}
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                  className={`project-item__path ${animationPhase >= 1 && animationPhase < 4
+                    ? 'is-on'
+                    : ''
+                    }`}
+                  style={{
+                    strokeDashoffset:
+                      animationPhase >= 1 && animationPhase < 4 ? 0 : '100%',
+                  }}
+                />
+                <path
+                  ref={arrowLineRef}
+                  d="M10 14 21 3"
+                  className={`project-item__path ${animationPhase >= 2 && animationPhase < 4
+                    ? 'is-on'
+                    : ''
+                    }`}
+                  style={{
+                    strokeDashoffset:
+                      animationPhase >= 2 && animationPhase < 4 ? 0 : '100%',
+                  }}
+                />
+                <path
+                  ref={arrowCurbRef}
+                  d="M15 3h6v6"
+                  className={`project-item__path ${animationPhase >= 3 && animationPhase < 4
+                    ? 'is-on'
+                    : ''
+                    }`}
+                  style={{
+                    strokeDashoffset:
+                      animationPhase >= 3 && animationPhase < 4 ? 0 : '100%',
+                  }}
+                />
+              </svg>
+            </span>
+          </h4>
+
+          <div className="project-item__stack">
+            {project.techStack.slice(0, 3).map((tech, idx, arr) => (
+              <div className="project-item__stackItem" key={tech}>
+                <span>{tech}</span>
+                {idx !== arr.length - 1 && (
+                  <span className="project-item__dot" />
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </TransitionLink>
+  );
+};
+
+const Projects = () => {
+  const [selectedProject, setSelectedProject] = useState<string | null>(null);
+
+  const handleMouseEnter = (slug: string) => {
+    setSelectedProject(slug);
+  };
+
+  return (
+    <section className="projects" id="my-projects">
+      <div className="projects__container">
+        <SectionTitle title="Selected Projects" />
+        <div className="projects__list">
+          {PROJECTS.map((project, index) => (
+            <ProjectItem
+              key={project.slug}
+              index={index}
+              project={project}
+              selectedProject={selectedProject}
+              onMouseEnter={handleMouseEnter}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Projects;

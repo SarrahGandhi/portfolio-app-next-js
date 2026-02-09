@@ -1,189 +1,136 @@
-@import "tailwindcss";
+/* app/globals.css */
 
+/* Theme tokens (same values you had) */
 :root {
-  /* Typography Scale */
-  --text-xs: 0.75rem; /* 12px */
-  --text-sm: 0.875rem; /* 14px */
-  --text-base: 1rem; /* 16px */
-  --text-lg: 1.125rem; /* 18px */
-  --text-xl: 1.25rem; /* 20px */
-  --text-2xl: 1.5rem; /* 24px */
-  --text-3xl: 1.875rem; /* 30px */
-  --text-4xl: 2.25rem; /* 36px */
-  --text-5xl: 3rem; /* 48px */
-  --text-6xl: 3.75rem; /* 60px */
-  --text-7xl: 4.5rem; /* 72px */
-  
-  /* Spacing Scale */
-  --spacing-xs: 0.5rem; /* 8px */
-  --spacing-sm: 0.75rem; /* 12px */
-  --spacing-md: 1rem; /* 16px */
-  --spacing-lg: 1.5rem; /* 24px */
-  --spacing-xl: 2rem; /* 32px */
-  --spacing-2xl: 3rem; /* 48px */
-  --spacing-3xl: 4rem; /* 64px */
-  --spacing-4xl: 5rem; /* 80px */
-  --spacing-5xl: 7.5rem; /* 120px */
-  
-  /* Section padding standardization */
-  --section-padding-y: var(--spacing-5xl); /* 120px */
-  --section-padding-x: var(--spacing-md); /* 16px */
-  --section-max-width: 1100px;
-  
-  /* Animation variables */
-  --transition-fast: 0.15s ease;
-  --transition-normal: 0.3s ease;
-  --transition-slow: 0.6s ease;
-  --transition-bounce: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --background: hsl(0 0% 13%);
+  --background-light: hsl(0 0% 19%);
+  --foreground: hsl(0 0% 87%);
+
+  --card: hsl(0 0% 3.9%);
+  --card-foreground: hsl(0 0% 98%);
+  --popover: hsl(0 0% 3.9%);
+  --popover-foreground: hsl(0 0% 98%);
+
+  --primary: hsl(35, 100%, 50%);
+  --primary-foreground: hsl(0 0% 13%);
+  --secondary: hsl(193 100% 47%);
+  --secondary-foreground: hsl(0 0% 13%);
+
+  --muted: hsl(0 0% 14.9%);
+  --muted-foreground: hsl(0 0% 71%);
+
+  --accent: hsl(0 0% 14.9%);
+  --accent-foreground: hsl(0 0% 98%);
+
+  --destructive: hsl(0 62.8% 30.6%);
+  --destructive-foreground: hsl(0 0% 98%);
+
+  --border: hsl(0 0% 24%);
+  --input: hsl(0 0% 14.9%);
+  --ring: hsl(0 0% 83.1%);
+
+  --chart-1: hsl(220 70% 50%);
+  --chart-2: hsl(160 60% 45%);
+  --chart-3: hsl(30 80% 55%);
+  --chart-4: hsl(280 65% 60%);
+  --chart-5: hsl(340 75% 55%);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Hide scrollbar (same behavior) */
+::-webkit-scrollbar {
+  display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ffffff;
-  }
+/* Global defaults */
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+  cursor: none;
+  /* your !cursor-none */
 }
 
-/* Global scroll behavior (no smooth scrolling by default) */
-html {
-  scroll-behavior: auto;
-}
-
-/* Section snap scrolling styles */
-.landing-container {
-  /* Enable smooth scrolling with snap points */
-  scroll-snap-type: y proximity;
-  overflow-y: auto;
-}
-
-/* Make each section a snap point */
-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  
-  position: relative;
-}
-
-/* Footer should only be as tall as its content */
-footer {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  position: relative;
-  /* No min-height for footer */
+html,
+body {
+  height: 100%;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  cursor: none; /* Hide default cursor */
-  line-height: 1.6;
+  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Base typography improvements */
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.2;
-  font-weight: 600;
+/* Custom Cursor Styles */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: white;
+  mix-blend-mode: difference;
+  /* Color inversion effect */
+  pointer-events: none;
+  z-index: 9999;
+
+  /* Performance optimizations */
+  transform: translate3d(0, 0, 0);
+  /* Force GPU acceleration */
+  will-change: transform;
+  /* Only hint transform changes, not size */
+  backface-visibility: hidden;
+
+  /* Faster, simpler transition - only for size changes */
+  transition: width 0.15s ease, height 0.15s ease;
 }
 
-p {
-  line-height: 1.6;
-  margin-bottom: var(--spacing-md);
+.custom-cursor.hover {
+  width: 70px;
+  height: 70px;
 }
 
-/* Section standardization */
-section {
-  padding: var(--section-padding-y) 0;
-  position: relative;
-  overflow: hidden;
+.custom-cursor.click {
+  width: 40px;
+  height: 40px;
 }
 
-.section-container {
-  width: 100%;
-  max-width: var(--section-max-width);
-  margin: 0 auto;
-  padding: 0 var(--section-padding-x);
+.custom-cursor.text-hover {
+  width: 70px;
+  height: 70px;
+  background-color: white;
 }
 
-/* Smooth reveal animations */
-.reveal-element {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity var(--transition-slow), transform var(--transition-slow);
-  will-change: opacity, transform;
+/* Utilities / components you had */
+
+/* Tailwind's .grid class override → just keep gap */
+.grid {
+  gap: 25px;
 }
 
-.reveal-element.revealed {
-  opacity: 1;
-  transform: translateY(0);
+/* Markdown list styling */
+.markdown-text ul {
+  padding-left: 1.25rem;
+  /* ~pl-5 */
+  margin-top: 0.5rem;
+  /* ~mt-2 */
+  list-style: disc;
 }
 
-.reveal-stagger {
-  transition-delay: var(--stagger-delay, 0s);
-}
-
-/* Custom Big Circle Cursor - Only for desktop screens */
-@media (min-width: 769px) {
-  * {
-    cursor: none !important;
+/* Float animation */
+@keyframes float {
+  0% {
+    transform: translateY(100vh);
+    opacity: 1;
   }
 
-  .custom-cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 50px;
-    height: 50px;
-    background: rgba(255, 255, 255, 0.8);
-    border: 2px solid rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    will-change: transform;
-    transform: translate(-50%, -50%);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  }
-
-  .custom-cursor.hover {
-    width: 80px;
-    height: 80px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 3px solid rgba(255, 255, 255, 1);
-    transition: width 0.15s ease, height 0.15s ease, background 0.15s ease, border 0.15s ease;
-  }
-
-  .custom-cursor.click {
-    width: 30px;
-    height: 30px;
-    background: rgba(255, 255, 255, 1);
-    transition: width 0.1s ease, height 0.1s ease, background 0.1s ease;
-  }
-
-  .custom-cursor.text-hover {
-    background: #ffffff;
-    border: 3px solid #ffffff;
-    width: 70px;
-    height: 70px;
-    mix-blend-mode: difference;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
-    transition: width 0.2s ease, height 0.2s ease, background 0.2s ease;
+  100% {
+    transform: translateY(-100px);
+    opacity: 0;
   }
 }
 
-/* Hide custom cursor on mobile/tablet and restore default cursor */
-@media (max-width: 767px) {
-  .custom-cursor {
-    display: none !important;
-  }
-  
-  * {
-    cursor: auto !important;
-  }
+.animate-float {
+  animation: float linear infinite;
 }

@@ -12,7 +12,9 @@ const CustomCursor = () => {
   // Helper to apply visual state
   const updateCursorPosition = useCallback(() => {
     if (cursorRef.current) {
-      cursorRef.current.style.transform = `translate3d(${mousePos.current.x - 25}px, ${mousePos.current.y - 25}px, 0)`
+      // Direct transform update - no CSS transition for position (handled by RAF)
+      // Use translate(-50%, -50%) to center the cursor regardless of its size
+      cursorRef.current.style.transform = `translate3d(${mousePos.current.x}px, ${mousePos.current.y}px, 0) translate(-50%, -50%)`
     }
   }, [])
 
@@ -28,9 +30,10 @@ const CustomCursor = () => {
 
   useEffect(() => {
     let animationId: number
-    
+
     // Re-evaluate what's under the cursor (used for both mousemove and scroll)
     const evaluateCursorContext = () => {
+      // Prevent multiple RAF calls from stacking
       if (animationId) return
 
       const { x, y } = mousePos.current
@@ -51,6 +54,7 @@ const CustomCursor = () => {
           shouldInvert = isTextTag && hasText
         }
 
+        // Only update class if state actually changed
         if (shouldInvert !== isOverText.current) {
           isOverText.current = shouldInvert
           updateCursorClass()
@@ -73,12 +77,12 @@ const CustomCursor = () => {
     const handleScrollOrResize = () => {
       evaluateCursorContext()
     }
-    
+
     const handleMouseDown = () => {
       isClicking.current = true
       updateCursorClass()
     }
-    
+
     const handleMouseUp = () => {
       isClicking.current = false
       updateCursorClass()

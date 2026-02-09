@@ -8,7 +8,11 @@
     max-width: 1100px;
     margin: 50px auto;
     padding: 0 16px;
-    will-change: transform, opacity;
+    opacity: 1;
+    transform: none;
+    font-family: "Montserrat", sans-serif;
+   
+    color: black;
   }
   
   /* Equivalent of grid gap-14 */
@@ -130,6 +134,22 @@
       opacity: 1 !important;
     }
   
+    .experience-item.exp-pre,
+    .experience-item.exp-pre.exp-in {
+      transform: none !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
+  }
+
+  /* Mobile: Always show content (no animations on mobile) */
+  @media (max-width: 767px) {
+    .experiences__container {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  
+    .experience-item,
     .experience-item.exp-pre,
     .experience-item.exp-pre.exp-in {
       transform: none !important;

@@ -8,7 +8,11 @@ function Footer() {
                     <div className="footer-content">
                         <div className="footer-title">
                             <h1>Sarrah Gandhi</h1>
+                                {/* <p>Want to connect with me</p>
+                                <p>connect@sarrahgandhi.com</p> */}
+                            
                         </div>
+                        
                         <div className="footer-socials">
 
                         </div>

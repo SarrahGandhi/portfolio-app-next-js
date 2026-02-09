@@ -35,6 +35,31 @@ export const PROJECTS: IProject[] = [
     images: ["/image1.png", "/image2.png"],
     slug: "milestone-manager",
     link: "https://github.com/SarrahGandhi/milestone-manager-react.git",
+  },
+  {
+    title: "Bullet Journal",
+    year: 2025,
+    description: "A Bullet Journal App",
+    role: "Full Stack Developer",
+    techStack: ["React", "Supabase", "Tailwind CSS"],
+    thumbnail: "/thumbnail.png",
+    longThumbnail: "/long-thumbnail.png",
+    images: ["/image1.png", "/image2.png"],
+    slug: "bullet-journal",
+    link: "https://github.com/SarrahGandhi/bullet-journal-react.git",
+
+  },
+  {
+    title: "Balance of Power",
+    year: 2025,
+    description: "A echo ravensburger game clone",
+    role: " Team Lead",
+    techStack: ["HTML", "CSS", "JavaScript"],
+    thumbnail: "/thumbnail.png",
+    longThumbnail: "/long-thumbnail.png",
+    images: ["/image1.png", "/image2.png"],
+    slug: "balance-of-power",
+    link: "https://github.com/SarrahGandhi/balance-Of-Power.git",
   }
 ];
 export const MY_STACK = {

@@ -1,7 +1,41 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useEffect } from "react";
+import Link from "next/link";
 
 import "./landing.css";
+
 function Landing() {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  // Simple reveal animation (slide up + fade + stagger)
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const items = Array.from(
+      container.querySelectorAll<HTMLElement>('.slide-up-and-fade')
+    );
+
+    items.forEach((el, i) => {
+      el.classList.add('pre');
+      el.style.setProperty('--delay', `${i * 0.06}s`);
+    });
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          items.forEach((el) => el.classList.add('in'));
+          io.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -15% 0px' }
+    );
+
+    io.observe(container);
+
+    return () => io.disconnect();
+  }, []);
   const Skills = [
     "JavaScript",
     "HTML",
@@ -22,63 +56,50 @@ function Landing() {
     "Express.js",
     "MongoDB",
     "MySQL",
+
+
   ];
   const scrollingSkills = [...Skills, ...Skills];
   return (
     <>
-      <div className="flower-icon">
-        <img
-          src="https://cdn-us.icons8.com/docs/WXTVKb9hp0elFWZjRc7hOQ/_X8G_8B0T0yC9WSaA_lNmg.svg"
-          alt="Union"
-        />
-      </div>
+      
       <div className="rectangle">
         <div className="rectangle-image"></div>
- <div className="icons">
-          <div className="figma-icon">
-            <img
-              src="https://cdn-us.icons8.com/docs/WXTVKb9hp0elFWZjRc7hOQ/qICglo_FH0Wnvq-RZOmaXA.svg"
-              alt="Group 2"
-            />
+        <section className="banner" id="banner">
+      <div className="banner-container" ref={containerRef}>
+        <div className="banner-layout">
+          <div className="banner-left">
+            <h1 className="banner-title slide-up-and-fade">
+              <span className="primary">FRONTEND</span>
+              <br />
+              <span className="offset">DEVELOPER</span>
+            </h1>
+
+            <a
+              href="/Sarrah Gandhi Resume .pdf"
+              download="Sarrah_Gandhi_Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="banner-button slide-up-and-fade"
+            >
+              DOWNLOAD MY RESUME
+            </a>
           </div>
-          <div className="orange-half-circle">
-            <img
-              src="https://cdn-us.icons8.com/docs/WXTVKb9hp0elFWZjRc7hOQ/c-A2zfoiBkSuJg9FN7bn7A.svg"
-              alt="Subtract"
-            />
+          
+          <div className="banner-right">
+            <div className="aboutlanding slide-up-and-fade">
+              <div className="html-tag">&lt;span&gt;</div>
+              <div className="about-content-landing">
+                Hi! I'm Sarrah. A creative Frontend Developer and Designer with 3+ years of experience in building high-performance, scalable, and responsive web solutions.
+              </div>
+              <div className="html-tag">&lt;/span&gt;</div>
+            </div>
           </div>
-          <div className="behance">
-            <img
-              src="https://cdn-us.icons8.com/docs/WXTVKb9hp0elFWZjRc7hOQ/biqDVmNOTUKx73svJPFayQ.svg"
-              alt="Logos"
-            />
-          </div>
-        </div>
-        <div className="landing-title">
-          <ul>
-            <li>DESIGNER BY CHOICE</li>
-            <li>DEVELOPER BY CAREER</li>
-            <li>DEBUGGER BY CHANCE</li>
-          </ul>
-        </div>
-       
-        <div className="image">
-          <img
-            src="https://lcdn-us.icons8.com/c/WXTVKb9hp0elFWZjRc7hOQ/fac041fa3855fb2a4ba2350c9156aa710a777fba.png"
-            alt="Profile"
-          />
-        </div>
-        <div className="resume-button">
-          <button>View Resume</button>
         </div>
       </div>
-      <div className="bottom-container-container">
-        <div className="bottom-container">
-          {scrollingSkills.map((skill, index) => (
-            <p key={index}>{skill}</p>
-          ))}
+    </section>
+    
         </div>
-      </div>
     </>
   );
 }

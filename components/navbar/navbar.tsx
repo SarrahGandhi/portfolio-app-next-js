@@ -16,10 +16,10 @@ function Navbar() {
           <div className="navigation-links">
             <ul>
               <li>
-                <Link href="/about">About//</Link>
+                <Link href="https://www.github.com/sarrahgandhi">Github</Link>
               </li>
               <li>
-                <Link href="/resume">Resume</Link>
+                <Link href="https://www.linkedin.com/in/sarrah-gandhi/">LinkedIn</Link>
               </li>
             </ul>
           </div>

@@ -2,7 +2,7 @@ import React from "react";
 import "./footer.css";
 function Footer() {
     return (
-        <div>
+        <footer id="footer">
             <div className="footer">
                 <div className="footer-rectangle">
                     <div className="footer-content">
@@ -15,7 +15,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-        </div>
+        </footer>
     );
 }
 

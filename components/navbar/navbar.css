@@ -7,6 +7,8 @@
   box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.25);
   margin: 56px clamp(20px, 5vw, 83px) 0px clamp(20px, 5vw, 83px);
   font-family: "Space Grotesk";
+  /* Exclude from scroll snap behavior */
+  scroll-snap-align: none;
 }
 
 .navigation {
@@ -58,9 +60,9 @@
 .navigation-links ul li:hover {
   color: #000000;
   font-weight: 900;
-  text-decoration: line-through;
+  text-decoration: underline;
   text-decoration-thickness: 8px;
-  text-decoration-color: #ffd7462d;
+  text-decoration-color: #ffa514;
 }
 
 /* Mobile (up to 640px) */

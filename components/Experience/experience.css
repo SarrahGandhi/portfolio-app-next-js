@@ -1,0 +1,140 @@
+/* Equivalent of py-section */
+
+  .experiences {
+    padding:0;
+  }
+  .experiences__container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 0 16px;
+    will-change: transform, opacity;
+  }
+  
+  /* Equivalent of grid gap-14 */
+  .experiences__grid {
+    display: grid;
+    gap: 56px;
+  }
+  
+  /* Typography */
+  .exp-company {
+    font-size: 20px;
+    opacity: 0.7;
+    margin: 0;
+  }
+  
+  .exp-title {
+    font-size: 48px;
+    font-family: "Anton", sans-serif;
+    line-height: 1;
+    margin: 14px 0 10px;
+  }
+  
+  .exp-duration {
+    font-size: 18px;
+    opacity: 0.7;
+    margin: 0;
+  }
+  
+  /* Responsive styles for experience section */
+  @media (max-width: 900px) {
+    .experiences__container {
+      margin: 40px auto;
+      padding: 0 24px;
+    }
+    
+    .experiences__grid {
+      gap: 40px;
+    }
+    
+    .exp-company {
+      font-size: 18px;
+    }
+    
+    .exp-title {
+      font-size: 36px;
+    }
+    
+    .exp-duration {
+      font-size: 16px;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .experiences__container {
+      margin: 30px auto;
+      padding: 0 16px;
+    }
+    
+    .experiences__grid {
+      gap: 32px;
+    }
+    
+    .exp-company {
+      font-size: 16px;
+    }
+    
+    .exp-title {
+      font-size: 28px;
+      margin: 10px 0 8px;
+    }
+    
+    .exp-duration {
+      font-size: 14px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .experiences__container {
+      margin: 24px auto;
+      padding: 0 12px;
+    }
+    
+    .experiences__grid {
+      gap: 24px;
+    }
+    
+    .exp-company {
+      font-size: 14px;
+    }
+    
+    .exp-title {
+      font-size: 24px;
+      margin: 8px 0 6px;
+    }
+    
+    .exp-duration {
+      font-size: 12px;
+    }
+  }
+  
+  /* ✅ Reveal animation for each item (GSAP from: y:50 opacity:0 stagger:0.3) */
+  .experience-item.exp-pre {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  
+  .experience-item.exp-pre.exp-in {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 700ms ease, opacity 700ms ease;
+    transition-delay: var(--delay, 0s);
+    will-change: transform, opacity;
+  }
+  
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .experiences__container {
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  
+    .experience-item.exp-pre,
+    .experience-item.exp-pre.exp-in {
+      transform: none !important;
+      opacity: 1 !important;
+      transition: none !important;
+    }
+  }
+  

@@ -1,6 +1,7 @@
 /* Project.css */
 .projects {
-  padding-left: 120px;
+  width: min(1100px, 92%);
+  margin: 0 auto;
 }
 
 .project-item {
@@ -56,9 +57,7 @@
     gap: 20px;
   }
 
-  .projects {
-    padding-left: 80px;
-  }
+
 }
 
 /* Index */

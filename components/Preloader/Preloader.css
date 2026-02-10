@@ -1,0 +1,72 @@
+/* Preloader.css */
+
+.preloader {
+    position: fixed;
+    inset: 0;
+    z-index: 6;
+
+    display: flex;
+
+    opacity: 1;
+    transition: opacity 1500ms ease;
+}
+
+/* Fade out wrapper when exiting */
+.preloader.is-exiting {
+    opacity: 0;
+}
+
+/* 10 vertical bars */
+.preloader__bar {
+    height: 100%;
+    width: 10%;
+    background: #3a3a3a;
+
+    transform: translateY(0);
+    transition: transform 500ms ease-in-out;
+}
+
+/* Slide bars down on exit */
+.preloader.is-exiting .preloader__bar {
+    transform: translateY(100%);
+}
+
+/* Center name text */
+.preloader__name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 0;
+    line-height: 1;
+    overflow: hidden;
+    text-align: center;
+
+    font-family: Anton, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+    /* text-[20vw] with max around 200px on large screens */
+    font-size: min(20vw, 200px);
+
+    opacity: 1;
+    transition: opacity 500ms ease;
+}
+
+.preloader__name.is-hidden {
+    opacity: 0;
+}
+
+/* Letters slide up */
+.preloader__letter {
+    display: inline-block;
+    transform: translateY(100%);
+    transition: transform 200ms ease-out;
+}
+
+.preloader__letter.is-up {
+    transform: translateY(0);
+}

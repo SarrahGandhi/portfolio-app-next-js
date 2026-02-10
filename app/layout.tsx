@@ -4,6 +4,8 @@ import "./globals.css";
 
 import Navbar from "@/components/navbar/navbar";
 import CustomCursor from "@/components/cursor/CustomCursor";
+import Preloader from "@/components/Preloader/Preloader";
+import ParticleBackground from "@/components/ParticleBackground/ParticleBackground";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,7 +33,9 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <CustomCursor />
-     
+
+        <Preloader />
+        <ParticleBackground />
         {children}
       </body>
     </html>

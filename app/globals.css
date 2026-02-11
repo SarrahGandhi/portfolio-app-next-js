@@ -3,6 +3,8 @@
 /* Theme tokens (same values you had) */
 :root {
   --background: hsl(0 0% 13%);
+
+  /* background: rgb(202, 227, 255); */
   --background-light: hsl(0 0% 19%);
   --foreground: hsl(0 0% 87%);
 

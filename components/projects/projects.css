@@ -11,7 +11,6 @@
   line-height: 1;
   padding: 20px 0px;
   border-bottom: 1px solid var(--border);
-
   transition: opacity 250ms ease, transform 250ms ease;
 }
 
@@ -83,7 +82,7 @@
   line-height: 1;
 
   /* gradient text */
-  background-image: linear-gradient(to right, var(--primary), var(--foreground));
+  background-color: white;
   background-size: 200% 100%;
   background-position: right;
   -webkit-background-clip: text;
@@ -95,6 +94,8 @@
 
 .project-item:hover .project-item__title {
   background-position: left;
+  background-color: var(--primary);
+
 }
 
 /* Icon visibility */

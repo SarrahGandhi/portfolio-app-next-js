@@ -14,7 +14,7 @@ interface Particle {
 const ParticleBackground = () => {
     const [particles, setParticles] = useState<Particle[]>([]);
     useEffect(() => {
-        const particleCount = 100;
+        const particleCount = 50;
         const newParticles: Particle[] = [];
         for (let i = 0; i < particleCount; i++) {
             newParticles.push({

@@ -60,7 +60,19 @@ export const PROJECTS: IProject[] = [
     images: ["/image1.png", "/image2.png"],
     slug: "balance-of-power",
     link: "https://github.com/SarrahGandhi/balance-Of-Power.git",
-  }
+  },
+  // {
+  //   title: "Where's My Money",
+  //   year: 2025,
+  //   description: "A finance Tracking Website",
+  //   role: " Full Stack Developer",
+  //   techStack: ["Angular", "Firebase", "CSS"],
+  //   thumbnail: "/thumbnail.png",
+  //   longThumbnail: "/long-thumbnail.png",
+  //   images: ["/image1.png", "/image2.png"],
+  //   slug: "balance-of-power",
+  //   link: "https://github.com/SarrahGandhi/where-is-my-money-app-angular.git",
+  // }
 ];
 export const MY_STACK = {
   frontend: [

@@ -79,7 +79,7 @@ const ProjectItem = ({ index, project, selectedProject, onMouseEnter }: ProjectP
   }, []);
 
   const handleMouseEnter = () => {
-    onMouseEnter(project.link);
+    onMouseEnter(project.slug);
     setIsHovered(true);
   };
 
@@ -99,16 +99,15 @@ const ProjectItem = ({ index, project, selectedProject, onMouseEnter }: ProjectP
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* {selectedProject === null && (
-        <Image
-          src={project.thumbnail}
-          alt="Project"
-          width={300}
-          height={200}
-          className="project-item__thumb"
-          loading="lazy"
-        />
-      )} */}
+      {/* Thumbnail shown only on mobile */}
+      <Image
+        src={project.thumbnail}
+        alt="Project"
+        width={800}
+        height={533}
+        className="project-item__thumb"
+        loading="lazy"
+      />
 
       <div className="project-item__row">
         <div className="project-item__index">{indexText}</div>
@@ -191,25 +190,47 @@ const ProjectItem = ({ index, project, selectedProject, onMouseEnter }: ProjectP
 
 const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<string | null>(null);
+  const [previewProject, setPreviewProject] = useState<IProject | null>(PROJECTS[0] || null);
 
   const handleMouseEnter = (slug: string) => {
     setSelectedProject(slug);
+    const proj = PROJECTS.find(p => p.slug === slug);
+    if (proj) setPreviewProject(proj);
+  };
+
+  const handleMouseLeaveList = () => {
+    setSelectedProject(null);
   };
 
   return (
     <section className="projects" id="my-projects">
       <div className="projects__container">
         <SectionTitle title="Selected Projects" />
-        <div className="projects__list">
-          {PROJECTS.map((project, index) => (
-            <ProjectItem
-              key={project.slug}
-              index={index}
-              project={project}
-              selectedProject={selectedProject}
-              onMouseEnter={handleMouseEnter}
-            />
-          ))}
+        <div className="projects__content" onMouseLeave={handleMouseLeaveList}>
+          <div className="projects__list">
+            {PROJECTS.map((project, index) => (
+              <ProjectItem
+                key={project.slug}
+                index={index}
+                project={project}
+                selectedProject={selectedProject}
+                onMouseEnter={handleMouseEnter}
+              />
+            ))}
+          </div>
+          <div className={`projects__preview ${selectedProject ? 'is-active' : ''}`}>
+            {previewProject && (
+              <TransitionLink href={previewProject.link as any} className="projects__preview-inner" style={{ display: 'block' }}>
+                <Image
+                  src={previewProject.thumbnail}
+                  alt={previewProject.title}
+                  fill
+                  className="projects__preview-image"
+                  loading="lazy"
+                />
+              </TransitionLink>
+            )}
+          </div>
         </div>
       </div>
     </section>

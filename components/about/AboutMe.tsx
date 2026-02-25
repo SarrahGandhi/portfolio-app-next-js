@@ -58,17 +58,10 @@ const AboutMe = () => {
           <div className="about__right">
             <div className="about__body">
               <p className={animateClass(3)}>
-                I&apos;m a frontend web developer dedicated to turning ideas into
-                creative solutions. I specialize in creating seamless and
-                intuitive user experiences.
-              </p>
+                I&apos;m a graphic and web designer creating clean, intentional digital experiences that balance strong visuals with usability. My work is rooted in typography, layout systems, and cohesive branding, with a focus on building websites and digital assets that feel modern, structured, and conversion-aware.              </p>
 
               <p className={`${animateClass(4)} about__bodySpacing`}>
-                My approach focuses on creating scalable, high-performing
-                solutions tailored to both user needs and business objectives.
-                By prioritizing performance, accessibility, and responsiveness,
-                I strive to deliver experiences that not only engage users but
-                also drive tangible results.
+                With a working knowledge of HTML, CSS, and CMS platforms, I design with real-world implementation in mind. I collaborate closely with developers and marketers to translate ideas into thoughtful, user-focused solutions that are both visually refined and technically practical
               </p>
             </div>
           </div>

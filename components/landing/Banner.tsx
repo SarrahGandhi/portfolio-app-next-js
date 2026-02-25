@@ -40,17 +40,15 @@ const Banner = () => {
       <div className="banner__container" ref={containerRef}>
         <div className="banner__left">
           <h1 className="banner__title" style={slideStyle}>
-            <span className="banner__primary">FRONTEND</span>
-            <br /> <span className="banner__indent">DEVELOPER</span>
+            <span className="banner__primary">GRAPHIC & WEB</span>
+            <br /> <span className="banner__indent">DESIGNER</span>
           </h1>
 
           <p
             className="banner__description"
             style={{ ...slideStyle, transitionDelay: '20ms' }}
           >
-            Hi! I&apos;m <span className="banner__name">Sarrah</span>. A creative
-            Frontend Developer with 3+ years of experience in building high-performance,
-            scalable, and responsive web solutions.
+            Hi! I&apos;m <span className="banner__name">Sarrah</span>. I am a Graphic and Web Designer with over 4 years of experience in creating visually stunning and user-friendly designs.
           </p>
 
           {/* <a

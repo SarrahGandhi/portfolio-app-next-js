@@ -73,6 +73,18 @@ export const PROJECTS: IProject[] = [
     slug: "branding-kit",
     link: "/branding-kit",
   },
+  {
+    title: "Elite Studios",
+    year: 2025,
+    description: "Brand Identity and Logo Design",
+    role: "Designer",
+    techStack: ["Figma", "Graphic Design", "Branding"],
+    thumbnail: "/elite-logo.png",
+    longThumbnail: "/long-thumbnail.png",
+    images: ["/image1.png", "/image2.png"],
+    slug: "elite-studios",
+    link: "/elite-studios",
+  },
   // {
   //   title: "Where's My Money",
   //   year: 2025,

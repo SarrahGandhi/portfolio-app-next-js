@@ -1,27 +1,29 @@
-/* Experiences.css */
+/* ──────────────────────────────────────────────
+   Experience
+   ────────────────────────────────────────────── */
 
 .experiences {
-  /* replaces py-section */
-  padding: 120px 0;
+  padding: var(--space-2xl) 0;
 }
 
 .experiences__container {
-  /* replaces container */
-  width: min(1100px, 92%);
+  width: min(var(--container-max), 92%);
   margin: 0 auto;
 }
 
-/* replaces grid gap-14 */
 .experiences__list {
   display: grid;
-  gap: 56px;
+  gap: 0;
 }
 
-/* animation (replaces transition-all duration-700 ease-out + translate/opacity) */
+/* Each experience item row */
 .experience-item {
-  transform: translateY(48px);
+  display: flex;
+  gap: 28px;
   opacity: 0;
-  transition: transform 700ms ease-out, opacity 700ms ease-out;
+  transform: translateY(48px);
+  transition: transform var(--transition-slow),
+              opacity var(--transition-slow);
   will-change: transform, opacity;
 }
 
@@ -30,41 +32,212 @@
   opacity: 1;
 }
 
-/* text styles */
+.experience-item.is-dimmed {
+  opacity: 0.3;
+}
+
+/* ── Timeline column ── */
+.experience-item__timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  min-width: 20px;
+  padding-top: 6px;
+}
+
+.experience-item__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 2px solid var(--muted-foreground);
+  flex-shrink: 0;
+  transition: border-color var(--transition-fast),
+              background var(--transition-fast),
+              box-shadow var(--transition-fast);
+  z-index: 1;
+}
+
+.experience-item.is-hovered .experience-item__dot {
+  border-color: var(--primary);
+  background: var(--primary);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.experience-item__line {
+  width: 1px;
+  flex: 1;
+  background: hsla(0 0% 100% / 0.1);
+  margin-top: 4px;
+}
+
+/* ── Content column ── */
+.experience-item__content {
+  padding-bottom: 48px;
+  transition: transform var(--transition-fast);
+}
+
+.experience-item.is-hovered .experience-item__content {
+  transform: translateX(6px);
+}
+
 .experience-item__company {
   margin: 0;
-  font-size: 20px;
-  /* ~text-xl */
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 
 .experience-item__title {
-  margin: 14px 0 10px;
-  /* ~mt-3.5 mb-2.5 */
-  font-size: clamp(2.25rem, 4vw, 3.125rem);
-  /* ~text-5xl */
-  line-height: 1;
-  /* ~leading-none */
-  font-weight: 400;
+  margin: 10px 0 8px;
+  font-size: clamp(1.75rem, 4vw, 3rem);
+  line-height: 1.05;
+  font-weight: 700;
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: -0.02em;
+  transition: color var(--transition-fast);
+}
 
-  /* if you still want Anton, ensure it's loaded in your app */
-  font-family: Anton, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+.experience-item.is-hovered .experience-item__title {
+  color: var(--primary);
 }
 
 .experience-item__duration {
   margin: 0;
-  font-size: 18px;
-  /* ~text-lg */
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
   color: var(--muted-foreground);
 }
 
-/* responsive padding */
+/* ── Toggle button ── */
+.experience-item__toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 6px 14px;
+  background: hsla(0 0% 100% / 0.04);
+  border: 1px solid hsla(0 0% 100% / 0.08);
+  border-radius: 999px;
+  color: var(--muted-foreground);
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  transition: color var(--transition-fast),
+              border-color var(--transition-fast),
+              background var(--transition-fast);
+}
+
+.experience-item__toggle:hover {
+  color: var(--foreground);
+  border-color: var(--primary);
+  background: hsla(35 100% 50% / 0.06);
+}
+
+.experience-item__chevron {
+  transition: transform 0.35s var(--ease-out-expo);
+}
+
+.experience-item__toggle.is-expanded .experience-item__chevron {
+  transform: rotate(180deg);
+}
+
+/* ── Highlights panel ── */
+.experience-item__highlights {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s var(--ease-out-expo);
+  overflow: hidden;
+}
+
+.experience-item__highlights.is-open {
+  grid-template-rows: 1fr;
+}
+
+.experience-item__highlight-list {
+  min-height: 0;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-item__highlights.is-open .experience-item__highlight-list {
+  padding-top: 16px;
+}
+
+.experience-item__highlight {
+  position: relative;
+  padding-left: 20px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--muted-foreground);
+  margin-bottom: 10px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s var(--ease-out-expo),
+              transform 0.35s var(--ease-out-expo);
+}
+
+.experience-item__highlights.is-open .experience-item__highlight {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Bullet dot */
+.experience-item__highlight::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+  opacity: 0.7;
+}
+
+.experience-item__highlight:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
   .experiences {
     padding: 80px 0;
   }
 
-  .experiences__list {
-    gap: 36px;
+  .experience-item {
+    gap: 20px;
+  }
+
+  .experience-item__content {
+    padding-bottom: 36px;
+  }
+}
+
+@media (max-width: 480px) {
+  .experiences {
+    padding: 60px 0;
+  }
+
+  .experience-item {
+    gap: 16px;
+  }
+
+  .experience-item__content {
+    padding-bottom: 28px;
+  }
+
+  .experience-item__title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+  }
+
+  .experience-item__highlight {
+    font-size: 13px;
   }
 }

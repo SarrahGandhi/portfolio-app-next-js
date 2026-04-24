@@ -1,10 +1,55 @@
+"use client";
+
 import Link from "next/link";
+import { useRef, useCallback, useState, useEffect } from "react";
 import "./navbar.css";
 
+const SECTION_LINKS = [
+  { label: "About", href: "#about-me" },
+  { label: "Stack", href: "#my-stack" },
+  { label: "Work", href: "#my-experience" },
+  { label: "Projects", href: "#my-projects" },
+  { label: "Contact", href: "#footer" },
+];
+
 function Navbar() {
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Lock scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
+  const handleMouseMove = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+    const el = headerRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    const nx = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const ny = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+    el.style.transform = `perspective(600px) rotateX(${-ny * 3}deg) rotateY(${nx * 3}deg)`;
+    el.style.boxShadow = `${-nx * 10 + 6}px ${-ny * 6 + 6}px 0px 0px rgba(0,0,0,0.25)`;
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    const el = headerRef.current;
+    if (!el) return;
+    el.style.transform = "";
+    el.style.boxShadow = "";
+  }, []);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <>
-      <div className="header">
+      <div
+        className="header"
+        ref={headerRef}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* Row 1: Logo + Socials (desktop) / Logo + Hamburger (mobile) */}
         <nav className="navigation">
           <div className="navigation-logo">
             <ul>
@@ -13,17 +58,64 @@ function Navbar() {
               </li>
             </ul>
           </div>
+
+          {/* Desktop social links */}
           <div className="navigation-links">
             <ul>
               <li>
-                <Link href="https://www.github.com/sarrahgandhi">Github</Link>
+                <a href="https://www.github.com/sarrahgandhi" target="_blank" rel="noopener noreferrer">Github</a>
               </li>
               <li>
-                <Link href="https://www.linkedin.com/in/sarrah-gandhi/">LinkedIn</Link>
+                <a href="https://www.linkedin.com/in/sarrah-gandhi/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               </li>
             </ul>
           </div>
+
+          {/* Hamburger (mobile only) */}
+          <button
+            className={`hamburger ${menuOpen ? "is-open" : ""}`}
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
         </nav>
+
+        {/* Row 2: Section links strip (desktop only) */}
+        <div className="navigation-sections">
+          {SECTION_LINKS.map((link) => (
+            <a key={link.href} href={link.href} className="nav-section-link">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile fullscreen menu */}
+      <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
+        <div className="mobile-menu__links">
+          {SECTION_LINKS.map((link, i) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="mobile-menu__link"
+              onClick={closeMenu}
+              style={{ animationDelay: `${i * 60}ms` }}
+            >
+              {link.label}
+            </a>
+          ))}
+        </div>
+        <div className="mobile-menu__socials">
+          <a href="https://www.github.com/sarrahgandhi" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+            Github ↗
+          </a>
+          <a href="https://www.linkedin.com/in/sarrah-gandhi/" target="_blank" rel="noopener noreferrer" onClick={closeMenu}>
+            LinkedIn ↗
+          </a>
+        </div>
       </div>
     </>
   );

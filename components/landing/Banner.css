@@ -1,24 +1,22 @@
-/* Banner.css */
+/* ──────────────────────────────────────────────
+   Banner
+   ────────────────────────────────────────────── */
 
-/* Outer wrapper */
 .banner {
   position: relative;
   overflow: hidden;
 }
 
-/* Container (replaces Tailwind "container ... flex ... h-[100svh]") */
 .banner__container {
-  width: min(1100px, 92%);
-  margin: 0 100px;
-
+  width: min(var(--container-max), 92%);
+  margin: 0 auto;
   min-height: 530px;
   height: 100svh;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  padding-bottom: 0;
+  padding-top: 72px;
+  /* account for fixed nav */
 }
 
 /* Left column */
@@ -32,133 +30,180 @@
 
 /* Typography */
 .banner__title {
+  font-family: "Bebas Neue", sans-serif;
   line-height: 0.95;
   font-weight: 700;
   margin: 0;
-
-  /* similar to text-6xl / sm:text-[80px] */
-  font-size: clamp(3rem, 6vw, 80px);
-
-  /* Tailwind had transition-all duration-100 */
+  font-size: clamp(2.5rem, 5.5vw, 68px);
+  letter-spacing: -0.01em;
   transition: transform 100ms linear, opacity 100ms linear;
   will-change: transform, opacity;
 }
 
-/* Replace text-primary */
 .banner__primary {
   color: var(--primary);
 }
 
-/* Replace ml-4 */
 .banner__indent {
-  margin-left: 16px;
+  /* margin-left: 16px; */
 }
 
 /* Description */
 .banner__description {
-  margin-top: 24px;
-  font-size: 18px;
-  line-height: 1.6;
+  margin-top: 28px;
+  font-size: clamp(15px, 1.6vw, 18px);
+  line-height: 1.7;
   color: var(--muted-foreground);
-
+  max-width: 500px;
   transition: transform 100ms linear, opacity 100ms linear;
   will-change: transform, opacity;
 }
 
 .banner__name {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--foreground);
 }
 
-/* CTA (replaces Button + mt-9) */
-.banner__cta {
-  margin-top: 36px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 12px 18px;
-  border-radius: 999px;
-
-  background: var(--primary);
-  color: var(--primary-foreground);
-  text-decoration: none;
-  font-weight: 600;
-
-  transition:
-    transform 100ms linear,
-    opacity 100ms linear,
-    filter 150ms ease;
-  will-change: transform, opacity;
-}
-
-.banner__cta:hover {
-  filter: brightness(1.05);
-}
-
-/* Stats block (replaces md:absolute bottom/right + md:flex-col) */
+/* ── Stats ── */
 .banner__stats {
   display: flex;
   gap: 16px;
   text-align: center;
-
   transition: transform 100ms linear, opacity 100ms linear;
 }
 
-/* Each stat */
 .banner__stat {
-  transition: transform 100ms linear, opacity 100ms linear;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
   will-change: transform, opacity;
 }
 
 .banner__statValue {
   margin: 0 0 6px;
-  font-weight: 400;
-
-  /* similar to text-3xl sm:text-4xl */
-  font-size: clamp(1.875rem, 3vw, 2.25rem);
-
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.875rem, 3vw, 2.5rem);
   color: var(--primary);
+  letter-spacing: -0.02em;
 }
 
 .banner__statLabel {
   margin: 0;
+  font-size: 13px;
+  color: var(--muted-foreground);
+  letter-spacing: 0.02em;
+}
+
+/* ── Scroll indicator ── */
+.banner__scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: opacity 0.3s ease;
+}
+
+.banner__scroll-text {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   color: var(--muted-foreground);
 }
 
-/* Responsive behavior (replaces max-md:flex-col + padding bottom) */
+.banner__scroll-line {
+  width: 1px;
+  height: 50px;
+  background: hsla(0 0% 100% / 0.12);
+  position: relative;
+  overflow: hidden;
+  border-radius: 1px;
+}
+
+.banner__scroll-dot {
+  width: 3px;
+  height: 12px;
+  background: var(--primary);
+  border-radius: 3px;
+  position: absolute;
+  left: -1px;
+  animation: scrollDotMove 2s ease-in-out infinite;
+}
+
+@keyframes scrollDotMove {
+  0% {
+    top: -12px;
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    top: 50px;
+    opacity: 0;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Responsive
+   ────────────────────────────────────────────── */
 @media (max-width: 768px) {
   .banner__container {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    padding-bottom: 40px;
-    /* max-md:pb-10 */
-    gap: 28px;
+    padding-bottom: 80px;
+    gap: 40px;
   }
 
   .banner__stats {
     width: 100%;
     justify-content: flex-start;
     text-align: left;
-    gap: 22px;
+    gap: 24px;
+  }
+
+  .banner__scroll-indicator {
+    bottom: 24px;
   }
 }
 
-/* Desktop behavior: position stats bottom-right like your Tailwind md:absolute */
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .banner__container {
     position: relative;
   }
 
   .banner__stats {
     position: absolute;
-    bottom: 10%;
+    bottom: 12%;
     right: 4%;
-
     flex-direction: column;
-    gap: 32px;
+    gap: 36px;
     text-align: right;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner__title {
+    font-size: clamp(2.25rem, 10vw, 3.5rem);
+  }
+
+  .banner__stats {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .banner__stat {
+    flex: 1;
+    min-width: 80px;
   }
 }

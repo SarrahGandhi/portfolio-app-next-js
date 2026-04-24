@@ -17,6 +17,8 @@ const Skills = () => {
     {},
   );
 
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
+
   useEffect(() => {
     if (!isVisible) return;
 
@@ -31,7 +33,7 @@ const Skills = () => {
             ...prev,
             [`${category}-title`]: true,
           }));
-        }, delay * 100),
+        }, delay * 80),
       );
       delay++;
 
@@ -43,7 +45,7 @@ const Skills = () => {
               ...prev,
               [`${category}-${skill.name}`]: true,
             }));
-          }, delay * 100),
+          }, delay * 80),
         );
         delay++;
       });
@@ -72,16 +74,22 @@ const Skills = () => {
               <div className="skills__itemsCol">
                 {items.map((item) => (
                   <div
-                    className={`skills__item ${revealClass(`${category}-${item.name}`)}`}
+                    className={`skills__item ${revealClass(`${category}-${item.name}`)} ${
+                      hoveredSkill === item.name ? 'is-hovered' : ''
+                    } ${hoveredSkill && hoveredSkill !== item.name ? 'is-dimmed' : ''}`}
                     key={item.name}
+                    onMouseEnter={() => setHoveredSkill(item.name)}
+                    onMouseLeave={() => setHoveredSkill(null)}
                   >
-                    <Image
-                      src={item.icon}
-                      alt={item.name}
-                      width={40}
-                      height={40}
-                      className="skills__icon"
-                    />
+                    <div className="skills__icon-wrap">
+                      <Image
+                        src={item.icon}
+                        alt={item.name}
+                        width={40}
+                        height={40}
+                        className="skills__icon"
+                      />
+                    </div>
                     <span className="skills__name">{item.name}</span>
                   </div>
                 ))}

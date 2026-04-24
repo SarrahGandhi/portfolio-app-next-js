@@ -2,6 +2,7 @@ export interface ExperienceItem {
   title: string;
   company: string;
   duration: string;
+  highlights: string[];
 }
 
 import { IProject } from '@/types';
@@ -9,17 +10,32 @@ export const MY_EXPERIENCE: ExperienceItem[] = [
   {
     title: "Web Developer & Designer",
     company: "Freelancer",
-    duration: "2022 - Present"
+    duration: "2022 - Present",
+    highlights: [
+      "Designed and developed responsive websites for 5+ clients across hospitality, retail, and personal branding",
+      "Built custom UI systems in React and Next.js with a focus on clean, conversion-aware layouts",
+      "Delivered full brand identity packages including logos, typography, and style guides"
+    ]
   },
   {
     title: "Full Stack Developer Intern",
     company: "IDesign Tech",
-    duration: "June 2025 - August 2025"
+    duration: "June 2025 - August 2025",
+    highlights: [
+      "Developed and maintained front-end features using React, TypeScript, and Tailwind CSS",
+      "Collaborated with cross-functional teams to ship user-facing product improvements",
+      "Implemented RESTful API integrations and optimized database queries for performance"
+    ]
   },
   {
     title: "Lead Frontend Developer",
     company: "Slay Coffee",
-    duration: "Sept 2022 - April 2023"
+    duration: "Sept 2022 - April 2023",
+    highlights: [
+      "Led frontend development of the e-commerce platform, improving page load times by 40%",
+      "Managed a team of 3 developers and coordinated sprint planning and code reviews",
+      "Designed and built a responsive product catalogue with dynamic filtering and search"
+    ]
   }
 ];
 
@@ -31,8 +47,8 @@ export const PROJECTS: IProject[] = [
     role: "Full Stack Developer",
     techStack: ["React", "Supabase", "Tailwind CSS"],
     thumbnail: "/milestone-manager.png",
-    longThumbnail: "/long-thumbnail.png",
-    images: ["/image1.png", "/image2.png"],
+    longThumbnail: "/app-home.png",
+    images: ["/milestone-manager.png", "/app-home.png", "/app-checkout.png"],
     slug: "milestone-manager",
     link: "https://github.com/SarrahGandhi/milestone-manager-react.git",
   },
@@ -42,9 +58,9 @@ export const PROJECTS: IProject[] = [
     description: "A Bullet Journal App",
     role: "Full Stack Developer",
     techStack: ["React", "Supabase", "Tailwind CSS"],
-    thumbnail: "/thumbnail.png",
-    longThumbnail: "/long-thumbnail.png",
-    images: ["/image1.png", "/image2.png"],
+    thumbnail: "/bullet-journal-cover.png",
+    longThumbnail: "/bullet-journal-cover.png",
+    images: ["/bullet-journal-cover.png", "/app-home.png", "/app-checkout.png"],
     slug: "bullet-journal",
     link: "https://github.com/SarrahGandhi/bullet-journal-react.git",
 
@@ -56,8 +72,8 @@ export const PROJECTS: IProject[] = [
     role: " Team Lead",
     techStack: ["HTML", "CSS", "JavaScript"],
     thumbnail: "/balance-of-power.png",
-    longThumbnail: "/long-thumbnail.png",
-    images: ["/image1.png", "/image2.png"],
+    longThumbnail: "/menu-1.jpg",
+    images: ["/balance-of-power.png", "/menu-1.jpg", "/menu-2.jpg"],
     slug: "balance-of-power",
     link: "https://github.com/SarrahGandhi/balance-Of-Power.git",
   },
@@ -68,8 +84,8 @@ export const PROJECTS: IProject[] = [
     role: "Designer",
     techStack: ["Figma", "Graphic Design", "Branding"],
     thumbnail: "/smokehouseriotlogo.png",
-    longThumbnail: "/long-thumbnail.png",
-    images: ["/image1.png", "/image2.png"],
+    longThumbnail: "/Altlogo.png",
+    images: ["/smokehouseriotlogo.png", "/Altlogo.png", "/Vector@2x.png"],
     slug: "branding-kit",
     link: "/branding-kit",
   },
@@ -79,9 +95,9 @@ export const PROJECTS: IProject[] = [
     description: "Brand Identity and Logo Design",
     role: "Designer",
     techStack: ["Figma", "Graphic Design", "Branding"],
-    thumbnail: "/elite-logo.png",
-    longThumbnail: "/long-thumbnail.png",
-    images: ["/image1.png", "/image2.png"],
+    thumbnail: "/elite-studios-cover.png",
+    longThumbnail: "/elite-studios-cover.png",
+    images: ["/elite-studios-cover.png", "/Altlogo.png", "/Vector@2x.png"],
     slug: "elite-studios",
     link: "/elite-studios",
   },

@@ -1,10 +1,15 @@
 /* app/globals.css */
 
-/* Theme tokens (same values you had) */
+/* ──────────────────────────────────────────────
+   Fonts — Bebas Neue (display) + DM Sans (body)
+   ────────────────────────────────────────────── */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+/* ──────────────────────────────────────────────
+   Theme tokens
+   ────────────────────────────────────────────── */
 :root {
   --background: hsl(0 0% 13%);
-
-  /* background: rgb(202, 227, 255); */
   --background-light: hsl(0 0% 19%);
   --foreground: hsl(0 0% 87%);
 
@@ -36,9 +41,27 @@
   --chart-3: hsl(30 80% 55%);
   --chart-4: hsl(280 65% 60%);
   --chart-5: hsl(340 75% 55%);
+
+  /* Spacing scale */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 64px;
+  --space-2xl: 120px;
+
+  /* Transition speed */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms var(--ease-out-expo);
+  --transition-med: 350ms var(--ease-out-expo);
+  --transition-slow: 700ms var(--ease-out-expo);
+
+  /* Container */
+  --container-max: 1100px;
+  --container-padding: 6vw;
 }
 
-/* Hide scrollbar (same behavior) */
+/* Hide scrollbar */
 ::-webkit-scrollbar {
   display: none;
 }
@@ -48,7 +71,6 @@
   box-sizing: border-box;
   border-color: var(--border);
   cursor: none;
-  /* your !cursor-none */
 }
 
 html,
@@ -56,14 +78,22 @@ body {
   height: 100%;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Custom Cursor Styles */
+/* ──────────────────────────────────────────────
+   Custom Cursor (UNCHANGED per user request)
+   ────────────────────────────────────────────── */
 .custom-cursor {
   position: fixed;
   top: 0;
@@ -73,18 +103,11 @@ body {
   border-radius: 50%;
   background-color: white;
   mix-blend-mode: difference;
-  /* Color inversion effect */
   pointer-events: none;
   z-index: 9999;
-
-  /* Performance optimizations */
   transform: translate3d(0, 0, 0);
-  /* Force GPU acceleration */
   will-change: transform;
-  /* Only hint transform changes, not size */
   backface-visibility: hidden;
-
-  /* Faster, simpler transition - only for size changes */
   transition: width 0.15s ease, height 0.15s ease;
 }
 
@@ -104,9 +127,41 @@ body {
   background-color: white;
 }
 
-/* Utilities / components you had */
+/* ──────────────────────────────────────────────
+   Section Title
+   ────────────────────────────────────────────── */
+.section-title {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.875rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--primary);
+  margin: 0 0 clamp(40px, 6vw, 80px);
+  padding-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
 
-/* Tailwind's .grid class override → just keep gap */
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.8s var(--ease-out-expo);
+}
+
+.section-title.is-visible::after,
+.section-title:hover::after {
+  width: 100%;
+}
+
+/* ──────────────────────────────────────────────
+   Utility: Grid gap override
+   ────────────────────────────────────────────── */
 .grid {
   gap: 25px;
 }
@@ -114,19 +169,20 @@ body {
 /* Markdown list styling */
 .markdown-text ul {
   padding-left: 1.25rem;
-  /* ~pl-5 */
   margin-top: 0.5rem;
-  /* ~mt-2 */
   list-style: disc;
 }
 
-/* Float animation */
+/* ──────────────────────────────────────────────
+   Animation Utilities
+   ────────────────────────────────────────────── */
+
+/* Float (existing) */
 @keyframes float {
   0% {
     transform: translateY(100vh);
     opacity: 1;
   }
-
   100% {
     transform: translateY(-100px);
     opacity: 0;
@@ -135,4 +191,75 @@ body {
 
 .animate-float {
   animation: float linear infinite;
+}
+
+/* Fade-slide in (shared across sections) */
+.fade-slide {
+  transform: translateY(100px);
+  opacity: 0;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+  will-change: transform, opacity;
+}
+
+.fade-slide.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Reveal animation (shared) */
+.reveal {
+  transform: translateY(40px);
+  opacity: 0;
+  transition: transform var(--transition-slow), opacity var(--transition-slow);
+  will-change: transform, opacity;
+}
+
+.reveal.is-visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Interactive lift on hover */
+.hover-lift {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Glow effect */
+.hover-glow {
+  transition: box-shadow var(--transition-med);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(255, 165, 0, 0.15),
+              0 0 60px rgba(255, 165, 0, 0.05);
+}
+
+/* Scroll indicator bounce */
+@keyframes scrollBounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Pulse glow for timeline dots */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 165, 0, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(255, 165, 0, 0); }
+}
+
+/* Container utility */
+.container-inner {
+  width: min(var(--container-max), 92%);
+  margin: 0 auto;
+}
+
+/* ──────────────────────────────────────────────
+   Landing container
+   ────────────────────────────────────────────── */
+.landing-container {
+  position: relative;
 }

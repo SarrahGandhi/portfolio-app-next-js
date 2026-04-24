@@ -1,7 +1,11 @@
-/* Project.css */
+/* ──────────────────────────────────────────────
+   Projects
+   ────────────────────────────────────────────── */
+
 .projects {
-  width: min(1100px, 92%);
+  width: min(var(--container-max), 92%);
   margin: 0 auto;
+  padding: var(--space-2xl) 0;
 }
 
 .projects__content {
@@ -13,7 +17,7 @@
   .projects__content {
     flex-direction: row;
     justify-content: space-between;
-    gap: 40px;
+    gap: 48px;
     align-items: flex-start;
   }
 }
@@ -29,6 +33,7 @@
   }
 }
 
+/* ── Preview panel ── */
 .projects__preview {
   display: none;
 }
@@ -41,8 +46,9 @@
     top: 120px;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-    transform: translateY(10px);
+    transition: opacity 0.5s var(--ease-out-expo),
+                transform 0.5s var(--ease-out-expo);
+    transform: translateY(12px);
   }
 
   .projects__preview.is-active {
@@ -57,30 +63,33 @@
     aspect-ratio: 4 / 3;
     border-radius: 16px;
     overflow: hidden;
-    background-color: var(--background-light, #111);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    background-color: var(--background-light);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+    border: 1px solid hsla(0 0% 100% / 0.05);
   }
 
   .projects__preview-image {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.8s ease;
+    transition: transform 0.8s var(--ease-out-expo);
   }
 
   .projects__preview.is-active .projects__preview-image {
-    transform: scale(1.02);
+    transform: scale(1.03);
   }
 }
 
+/* ── Project item ── */
 .project-item {
   display: block;
   text-decoration: none;
   color: inherit;
   line-height: 1;
-  padding: 20px 0px;
-  border-bottom: 1px solid var(--border);
-  transition: opacity 250ms ease, transform 250ms ease;
+  padding: 24px 0;
+  border-bottom: 1px solid hsla(0 0% 100% / 0.06);
+  transition: opacity 300ms var(--ease-out-expo),
+              transform 300ms var(--ease-out-expo);
 }
 
 .project-item:first-child {
@@ -92,26 +101,24 @@
   border-bottom: none;
 }
 
-/* "group-hover/projects:opacity-30" equivalent:
-   We'll fade all items on hover of a parent container by adding a class there.
-   For now we support an optional faded mode passed via selectedProject. */
 .project-item--faded {
-  opacity: 0.3;
+  opacity: 0.25;
 }
 
-/* Hover should bring back full opacity */
 .project-item:hover {
   opacity: 1;
 }
 
-/* Thumbnail */
+/* Thumbnail (mobile only) */
 .project-item__thumb {
   width: 100%;
   aspect-ratio: 3 / 2;
   object-fit: contain;
   object-position: center;
-  margin-bottom: 24px;
-  border-radius: 10px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: var(--background-light);
+  border: 1px solid hsla(0 0% 100% / 0.04);
 }
 
 @media (min-width: 1024px) {
@@ -123,22 +130,25 @@
 /* Layout row */
 .project-item__row {
   display: flex;
-  gap: 8px;
+  gap: 12px;
+  align-items: flex-start;
 }
 
 @media (min-width: 768px) {
   .project-item__row {
     gap: 20px;
   }
-
-
 }
 
 /* Index */
 .project-item__index {
-  font-family: Anton, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 600;
   color: var(--muted-foreground);
   flex: 0 0 auto;
+  font-size: 14px;
+  opacity: 0.5;
+  padding-top: 4px;
 }
 
 /* Title */
@@ -146,15 +156,12 @@
   display: flex;
   align-items: center;
   gap: 16px;
-
   margin: 0;
-
-  font-family: Anton, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-weight: 400;
-
-  /* text-4xl xs:text-6xl */
-  font-size: clamp(2.25rem, 5vw, 3.75rem);
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1;
+  letter-spacing: -0.03em;
 
   /* gradient text */
   background-color: white;
@@ -163,29 +170,30 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-
-  transition: background-position 700ms ease;
+  transition: background-position 600ms var(--ease-out-expo);
 }
 
 .project-item:hover .project-item__title {
   background-position: left;
   background-color: var(--primary);
-
 }
 
-/* Icon visibility */
+/* Icon */
 .project-item__icon {
   display: inline-flex;
   color: var(--foreground);
   opacity: 0;
-  transition: opacity 250ms ease;
+  transition: opacity 250ms ease,
+              transform 250ms var(--ease-out-expo);
+  transform: translate(-4px, 4px);
 }
 
 .project-item__icon.is-visible {
   opacity: 1;
+  transform: translate(0, 0);
 }
 
-/* SVG stroke animation paths */
+/* SVG stroke animation */
 .project-item__path {
   opacity: 0;
   transition: opacity 300ms ease;
@@ -195,15 +203,16 @@
   opacity: 1;
 }
 
-/* Tech stack list */
+/* Tech stack */
 .project-item__stack {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
-
   color: var(--muted-foreground);
+  font-family: "DM Sans", sans-serif;
   font-size: 12px;
+  letter-spacing: 0.02em;
 }
 
 .project-item__stackItem {
@@ -213,15 +222,34 @@
 }
 
 .project-item__dot {
-  width: 8px;
-  height: 8px;
+  width: 4px;
+  height: 4px;
   border-radius: 999px;
-  background: var(--background-light);
+  background: var(--muted-foreground);
+  opacity: 0.4;
 }
 
-/* Small screens spacing */
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .projects {
+    padding: 80px 0;
+  }
+}
+
 @media (max-width: 480px) {
+  .projects {
+    padding: 60px 0;
+  }
+
+  .project-item {
+    padding: 20px 0;
+  }
+
   .project-item__row {
     gap: 10px;
+  }
+
+  .project-item__title {
+    font-size: clamp(1.5rem, 8vw, 2.25rem);
   }
 }

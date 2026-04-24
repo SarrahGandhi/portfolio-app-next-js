@@ -1,21 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import Navbar from "@/components/navbar/navbar";
 import CustomCursor from "@/components/cursor/CustomCursor";
 import Preloader from "@/components/Preloader/Preloader";
 import ParticleBackground from "@/components/ParticleBackground/ParticleBackground";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "Sarrah Gandhi - Frontend Developer",
@@ -43,11 +32,8 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <CustomCursor />
-
         <Preloader />
         <ParticleBackground />
         {children}

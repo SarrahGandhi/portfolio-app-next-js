@@ -115,7 +115,7 @@ const Banner = () => {
             className="banner__description"
             style={{ ...slideStyle, transitionDelay: '20ms' }}
           >
-            Hi! I&apos;m <span className="banner__name">Sarrah</span>. I am a Graphic and Web Designer with over 4 years of experience in creating visually stunning and user-friendly designs.
+            I&apos;m <span className="banner__name">Sarrah</span> — I care about the one pixel nobody notices until it&apos;s wrong. Four years making the web feel less like software and more like intention.
           </p>
         </div>
 

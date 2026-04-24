@@ -42,11 +42,11 @@ const AboutMe = () => {
     <section className="about" id="about-me">
       <div className="about__container" ref={containerRef as any}>
         <h2 className={`about__headline ${animateClass(0)}`}>
-          I believe in a user centered design approach, ensuring that every
-          project I work on is tailored to meet the specific needs of its users.
+          Most people open a website and feel nothing. I build the ones
+          that make them stop scrolling.
         </h2>
 
-        <p className={`about__subline ${animateClass(1)}`}>This is me.</p>
+        <p className={`about__subline ${animateClass(1)}`}>About me.</p>
 
         <div className="about__grid">
           <div className="about__left">
@@ -58,10 +58,11 @@ const AboutMe = () => {
           <div className="about__right">
             <div className="about__body">
               <p className={animateClass(3)}>
-                I&apos;m a graphic and web designer creating clean, intentional digital experiences that balance strong visuals with usability. My work is rooted in typography, layout systems, and cohesive branding, with a focus on building websites and digital assets that feel modern, structured, and conversion-aware.              </p>
+                I&apos;m a graphic and web designer — but more honestly, I&apos;m someone who gets unreasonably invested in the quality of other people&apos;s work. Four years in, and I still obsess over type scales, hover states, and whether a layout breathes right. That obsession has produced brand identities, full-stack applications, and everything in between, for clients who care as much about the details as I do.
+              </p>
 
               <p className={`${animateClass(4)} about__bodySpacing`}>
-                With a working knowledge of HTML, CSS, and CMS platforms, I design with real-world implementation in mind. I collaborate closely with developers and marketers to translate ideas into thoughtful, user-focused solutions that are both visually refined and technically practical
+                I write code as well as I push pixels — React, Next.js, TypeScript, the whole stack — which means nothing gets lost in translation between design and build. I don&apos;t hand off files and hope for the best. I stay in it until the thing ships right: fast, accessible, and sharp enough that your users notice without knowing why.
               </p>
             </div>
           </div>

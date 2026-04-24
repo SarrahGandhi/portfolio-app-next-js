@@ -12,9 +12,18 @@ const SECTION_LINKS = [
   { label: "Contact", href: "#footer" },
 ];
 
+// Matches the preloader's total duration (animationPhase 3 fires at 2500ms)
+const PRELOADER_DURATION = 2500;
+
 function Navbar() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), PRELOADER_DURATION);
+    return () => clearTimeout(t);
+  }, []);
 
   // Lock scroll when menu is open
   useEffect(() => {
@@ -44,7 +53,7 @@ function Navbar() {
   return (
     <>
       <div
-        className="header"
+        className={`header ${ready ? 'is-ready' : ''}`}
         ref={headerRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}

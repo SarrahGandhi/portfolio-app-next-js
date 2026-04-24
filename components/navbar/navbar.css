@@ -9,10 +9,21 @@
   font-family: "Space Grotesk";
   scroll-snap-align: none;
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.6s ease,
+              translate 0.6s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
   will-change: transform, box-shadow;
   z-index: 100;
+  opacity: 0;
+  translate: 0 -16px;
+  pointer-events: none;
+}
+
+.header.is-ready {
+  opacity: 1;
+  translate: 0 0;
+  pointer-events: auto;
 }
 
 /* ── Row 1: Main navigation ── */

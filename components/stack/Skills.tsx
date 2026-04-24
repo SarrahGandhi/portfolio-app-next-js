@@ -17,8 +17,6 @@ const Skills = () => {
     {},
   );
 
-  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
-
   useEffect(() => {
     if (!isVisible) return;
 
@@ -74,12 +72,8 @@ const Skills = () => {
               <div className="skills__itemsCol">
                 {items.map((item) => (
                   <div
-                    className={`skills__item ${revealClass(`${category}-${item.name}`)} ${
-                      hoveredSkill === item.name ? 'is-hovered' : ''
-                    } ${hoveredSkill && hoveredSkill !== item.name ? 'is-dimmed' : ''}`}
+                    className={`skills__item ${revealClass(`${category}-${item.name}`)}`}
                     key={item.name}
-                    onMouseEnter={() => setHoveredSkill(item.name)}
-                    onMouseLeave={() => setHoveredSkill(null)}
                   >
                     <div className="skills__icon-wrap">
                       <Image

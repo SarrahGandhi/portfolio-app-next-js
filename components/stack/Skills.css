@@ -56,33 +56,12 @@
   border-radius: 12px;
   border: 1px solid transparent;
   background: hsla(0 0% 100% / 0.02);
-  transition: transform var(--transition-fast),
-              border-color var(--transition-fast),
-              background var(--transition-fast),
-              box-shadow var(--transition-med),
-              opacity var(--transition-fast);
-}
-
-.skills__item.is-hovered {
-  border-color: hsla(35 100% 50% / 0.25);
-  background: hsla(35 100% 50% / 0.06);
-  box-shadow: 0 0 24px hsla(35 100% 50% / 0.08);
-  transform: translateY(-2px);
-}
-
-.skills__item.is-dimmed {
-  opacity: 0.4;
 }
 
 .skills__icon-wrap {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform var(--transition-fast);
-}
-
-.skills__item.is-hovered .skills__icon-wrap {
-  transform: scale(1.12);
 }
 
 .skills__icon {

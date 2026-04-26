@@ -172,6 +172,8 @@ const ProjectItem = ({ index, project, selectedProject, onMouseEnter }: ProjectP
             </span>
           </h4>
 
+          <p className="project-item__desc">{project.description}</p>
+
           <div className="project-item__stack">
             {project.techStack.slice(0, 3).map((tech, idx, arr) => (
               <div className="project-item__stackItem" key={tech}>
@@ -182,6 +184,35 @@ const ProjectItem = ({ index, project, selectedProject, onMouseEnter }: ProjectP
               </div>
             ))}
           </div>
+
+          {(project.sourceCode || project.link?.startsWith('http') || project.liveUrl) && (
+            <div className="project-item__actions">
+              {(project.sourceCode || project.link?.startsWith('http')) && (
+                <button
+                  className="project-item__btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    window.open(project.sourceCode || project.link, '_blank', 'noopener noreferrer');
+                  }}
+                >
+                  View GitHub
+                </button>
+              )}
+              {project.liveUrl && (
+                <button
+                  className="project-item__btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    e.preventDefault();
+                    window.open(project.liveUrl, '_blank', 'noopener noreferrer');
+                  }}
+                >
+                  View Live Site
+                </button>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </TransitionLink>

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useRef, useCallback, useState, useEffect } from "react";
 import "./navbar.css";
 
@@ -19,6 +20,10 @@ function Navbar() {
   const headerRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [ready, setReady] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+
+  const sectionHref = (hash: string) => (isHome ? hash : `/${hash}`);
 
   useEffect(() => {
     const t = setTimeout(() => setReady(true), PRELOADER_DURATION);
@@ -95,7 +100,11 @@ function Navbar() {
         {/* Row 2: Section links strip (desktop only) */}
         <div className="navigation-sections">
           {SECTION_LINKS.map((link) => (
-            <a key={link.href} href={link.href} className="nav-section-link">
+            <a
+              key={link.href}
+              href={sectionHref(link.href)}
+              className="nav-section-link"
+            >
               {link.label}
             </a>
           ))}
@@ -108,7 +117,7 @@ function Navbar() {
           {SECTION_LINKS.map((link, i) => (
             <a
               key={link.href}
-              href={link.href}
+              href={sectionHref(link.href)}
               className="mobile-menu__link"
               onClick={closeMenu}
               style={{ animationDelay: `${i * 60}ms` }}

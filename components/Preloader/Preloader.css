@@ -7,6 +7,10 @@
 
     display: flex;
 
+    /* Solid backdrop prevents the page background from leaking through
+       sub-pixel gaps between the 10 bars on certain viewport widths. */
+    background: #3a3a3a;
+
     opacity: 1;
     transition: opacity 1500ms ease;
 }
@@ -19,7 +23,10 @@
 /* 10 vertical bars */
 .preloader__bar {
     height: 100%;
-    width: 10%;
+    /* Use flex:1 instead of width:10% so the browser distributes the
+       remaining sub-pixels and never leaves a gap between bars. */
+    flex: 1 1 0;
+    min-width: 0;
     background: #3a3a3a;
 
     transform: translateY(0);
@@ -47,7 +54,14 @@
     overflow: hidden;
     text-align: center;
 
-    font-family: Anton, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    /* Use the next/font Anton variable so the typography is identical
+       across macOS, Windows and Linux (no reliance on a locally installed
+       Anton font). The literal Anton fallback is kept for browsers that
+       happen to have it locally before the web font finishes loading. */
+    font-family: var(--font-anton), Anton, "Bebas Neue", Impact,
+        "Arial Narrow Bold", system-ui, sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.02em;
 
     /* text-[12vw] with clamp to ensure readability on mobile and max size on desktop */
     font-size: clamp(40px, 12vw, 200px);

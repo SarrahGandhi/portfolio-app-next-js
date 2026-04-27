@@ -34,7 +34,7 @@ function useCounter(end: number, duration = 2000, startCounting: boolean) {
 const STATS = [
   { value: 3, suffix: '+', label: 'Years of Experience' },
   { value: 7, suffix: '+', label: 'Completed Projects' },
-  { value: 10, suffix: 'K+', label: 'Hours Worked' },
+  { value: 10, suffix: 'K+', label: 'Cups of Coffee' },
 ];
 
 const StatItem = ({

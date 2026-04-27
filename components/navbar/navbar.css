@@ -1,23 +1,33 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Space+Grotesk:wght@300..700&display=swap");
+/* ──────────────────────────────────────────────
+   Navbar — single clean row, no box framing
+   ────────────────────────────────────────────── */
 
 .header {
-  position: relative;
-  border: 2px solid #000;
-  background: #fff;
-  box-shadow: 6px 6px 0px 0px rgba(0, 0, 0, 0.25);
-  margin: 56px clamp(20px, 5vw, 83px) 0px clamp(20px, 5vw, 83px);
-  font-family: "Space Grotesk";
-  scroll-snap-align: none;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.6s ease,
-              translate 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-  transform-style: preserve-3d;
-  will-change: transform, box-shadow;
-  z-index: 100;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  /* Sits above the mobile menu so the hamburger/X is always tappable */
+  z-index: 200;
+
+  background: hsla(0 0% 8% / 0.65);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+
+  /* No border by default — appears only after scrolling */
+  border-bottom: 1px solid transparent;
+
+  font-family: "DM Sans", system-ui, -apple-system, sans-serif;
+  color: var(--foreground);
+
+  /* Entrance: fade + slide down once preloader finishes */
   opacity: 0;
   translate: 0 -16px;
   pointer-events: none;
+  transition: opacity 0.6s ease,
+              translate 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+              background 0.3s ease,
+              border-color 0.3s ease;
 }
 
 .header.is-ready {
@@ -26,158 +36,170 @@
   pointer-events: auto;
 }
 
-/* ── Row 1: Main navigation ── */
+.header.is-scrolled {
+  background: hsla(0 0% 8% / 0.82);
+  border-bottom-color: hsla(0 0% 100% / 0.06);
+}
+
+/* When the mobile menu is open, drop the header's own backdrop so the
+   X (the morphed hamburger) reads cleanly over the menu's dark glass. */
+.header.is-menu-open {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom-color: transparent;
+}
+
+/* ── Single-row layout ── */
 .navigation {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0px;
+  gap: clamp(20px, 4vw, 48px);
+  padding: 0 clamp(20px, 5vw, 56px);
+  height: 64px;
 }
 
-.navigation ul {
+/* ── Logo ── */
+.navigation-logo {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(18px, 1.5vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--foreground);
+  white-space: nowrap;
+  transition: letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.25s ease;
+}
+
+.navigation-logo:hover {
+  letter-spacing: 0.18em;
+  color: var(--primary);
+}
+
+/* ── Section links (centered) ── */
+.navigation-sections {
   list-style: none;
-  display: flex;
   margin: 0;
   padding: 0;
-}
-
-/* Logo */
-.navigation-logo ul li {
-  padding-left: 20px;
-  font-size: clamp(14px, 2vw, 18px);
-  font-weight: 600;
-}
-
-.navigation-logo ul li a {
-  text-decoration: none;
-  color: #000;
-  display: inline-block;
-  transition: letter-spacing 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-              color 0.3s ease;
-}
-
-.navigation-logo ul li a:hover {
-  letter-spacing: 0.06em;
-  color: #e68a00;
-}
-
-/* Social links */
-.navigation-links ul li {
-  color: #000;
-  font-family: "Space Grotesk";
-  font-size: clamp(12px, 1.5vw, 16px);
-  font-weight: 400;
-  line-height: 16px;
-  border-left: 2px solid #000;
-  position: relative;
-  overflow: hidden;
-}
-
-.navigation-links ul li a {
-  display: block;
-  text-decoration: none;
-  color: #000;
-  padding: clamp(12px, 2vw, 20px) clamp(15px, 2.5vw, 30px);
-  position: relative;
-  z-index: 1;
-  transition: color 0.2s ease;
-}
-
-/* Orange fill wipe */
-.navigation-links ul li::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #ffa514;
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 0;
-}
-
-.navigation-links ul li:hover::before {
-  transform: scaleX(1);
-}
-
-.navigation-links ul li:hover a {
-  font-weight: 700;
-}
-
-/* ── Row 2: Section links strip ── */
-.navigation-sections {
   display: flex;
-  border-top: 2px solid #000;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 18px);
+  flex: 1;
+  justify-content: center;
 }
 
 .nav-section-link {
-  flex: 1;
-  text-align: center;
-  font-family: "Space Grotesk";
-  font-size: 11px;
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
   font-weight: 500;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
   text-decoration: none;
-  color: #555;
-  padding: 8px 0;
-  position: relative;
-  overflow: hidden;
-  transition: color 0.2s ease;
-}
-
-.nav-section-link + .nav-section-link {
-  border-left: 1px solid #ccc;
+  color: var(--muted-foreground);
+  padding: 6px 4px;
+  transition: color 0.25s ease;
 }
 
 .nav-section-link::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: #ffa514;
+  left: 4px;
+  right: 4px;
+  bottom: 2px;
+  height: 1px;
+  background: var(--primary);
   transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-section-link:hover {
-  color: #000;
+  color: var(--foreground);
 }
 
 .nav-section-link:hover::after {
   transform: scaleX(1);
 }
 
-/* ── Hamburger button ── */
+/* ── Socials (right) ── */
+.navigation-socials {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-social-link {
+  position: relative;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--muted-foreground);
+  padding: 6px 8px;
+  transition: color 0.25s ease;
+}
+
+.nav-social-link::after {
+  content: "";
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 2px;
+  height: 1px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-social-link:hover {
+  color: var(--foreground);
+}
+
+.nav-social-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* ── Hamburger ── */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
-  width: 28px;
-  height: 28px;
+  width: 26px;
+  height: 26px;
   background: none;
   border: none;
   padding: 0;
-  margin-right: 16px;
   z-index: 200;
 }
 
 .hamburger span {
   display: block;
   width: 100%;
-  height: 2px;
-  background: #000;
+  height: 1.5px;
+  background: var(--foreground);
   border-radius: 2px;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              opacity 0.2s ease;
+              opacity 0.2s ease,
+              background 0.2s ease;
   transform-origin: center;
 }
 
+.hamburger:hover span {
+  background: var(--primary);
+}
+
 .hamburger.is-open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
+  transform: translateY(6.5px) rotate(45deg);
 }
 
 .hamburger.is-open span:nth-child(2) {
@@ -185,7 +207,7 @@
 }
 
 .hamburger.is-open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+  transform: translateY(-6.5px) rotate(-45deg);
 }
 
 /* ── Mobile fullscreen menu ── */
@@ -205,42 +227,41 @@
 }
 
 /* ──────────────────────────────────────────────
-   Mobile (up to 640px)
+   Tablet & below — collapse to hamburger
    ────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .header {
-    margin: 20px 15px 0 15px;
-    box-shadow: 4px 4px 0px 0px rgba(0, 0, 0, 0.25);
-    z-index: 200;
-  }
-
-  /* Hide desktop elements */
-  .navigation-links,
-  .navigation-sections {
+@media (max-width: 900px) {
+  .navigation-sections,
+  .navigation-socials {
     display: none;
   }
 
-  /* Show hamburger */
   .hamburger {
     display: flex;
+    margin-left: auto;
+  }
+}
+
+/* ──────────────────────────────────────────────
+   Mobile (up to 640px)
+   ────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .navigation {
+    height: 60px;
+    padding: 0 18px;
   }
 
-  .navigation-logo {
-    padding: 12px 0;
-  }
-
-  .navigation-logo ul li {
-    padding-left: 16px;
-  }
-
-  /* Mobile menu */
   .mobile-menu {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: fixed;
     inset: 0;
-    background: #fff;
+    background: hsla(0 0% 8% / 0.94);
+    backdrop-filter: blur(24px) saturate(140%);
+    -webkit-backdrop-filter: blur(24px) saturate(140%);
+    /* Stays below the header so the X icon remains tappable */
     z-index: 150;
-    padding: 100px 30px 40px;
+    padding: 100px 28px 48px;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.35s ease;
@@ -255,19 +276,21 @@
   .mobile-menu__links {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
   }
 
   .mobile-menu__link {
-    font-family: "Space Grotesk";
-    font-size: 36px;
-    font-weight: 700;
-    color: #000;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: clamp(36px, 9vw, 56px);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--foreground);
     text-decoration: none;
-    padding: 10px 0;
-    border-bottom: 2px solid #eee;
+    padding: 14px 0;
+    border-bottom: 1px solid hsla(0 0% 100% / 0.08);
     opacity: 0;
-    transition: color 0.2s ease;
+    transition: color 0.25s ease,
+                padding-left 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .mobile-menu.is-open .mobile-menu__link {
@@ -276,59 +299,37 @@
 
   .mobile-menu__link:hover,
   .mobile-menu__link:active {
-    color: #ffa514;
+    color: var(--primary);
+    padding-left: 8px;
   }
 
   .mobile-menu__socials {
-    margin-top: 40px;
+    margin-top: 32px;
     display: flex;
-    gap: 20px;
+    gap: 24px;
+    padding-top: 24px;
+    border-top: 1px solid hsla(0 0% 100% / 0.08);
   }
 
   .mobile-menu__socials a {
-    font-family: "Space Grotesk";
-    font-size: 14px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
     font-weight: 500;
-    color: #666;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   .mobile-menu__socials a:hover {
-    color: #ffa514;
+    color: var(--primary);
   }
 }
 
-/* ── Tablets (641px - 900px) ── */
-@media (min-width: 641px) and (max-width: 900px) {
-  .header {
-    margin: 40px 30px 0 30px;
-  }
-
-  .navigation-logo ul li {
-    padding-left: 15px;
-  }
-
-  .navigation-links ul li a {
-    padding: 15px 20px;
-    font-size: 14px;
-  }
-}
-
-/* Small Desktops (901px - 1200px) */
-@media (min-width: 901px) and (max-width: 1200px) {
-  .header {
-    margin: 50px 50px 0 50px;
-  }
-}
-
-/* Landscape adjustments */
+/* ── Landscape ── */
 @media (orientation: landscape) and (max-height: 500px) {
-  .header {
-    margin: 15px 20px 0 20px;
-  }
-
-  .navigation-links ul li a {
-    padding: 10px 15px;
+  .navigation {
+    height: 52px;
   }
 }

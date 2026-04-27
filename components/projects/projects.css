@@ -261,8 +261,9 @@
 }
 
 .project-item__btn:hover {
-  border-color: hsla(0 0% 100% / 0.3);
-  color: hsla(0 0% 100% / 0.75);
+  border-color: hsla(0, 0%, 100%, 0.3);
+  color: hsla(0, 0%, 0%, 0.75);
+  background-color: hsl(0, 0%, 100%);
 }
 
 /* ── Responsive ── */

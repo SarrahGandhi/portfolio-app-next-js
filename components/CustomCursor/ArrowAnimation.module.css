@@ -1,33 +1,36 @@
 @keyframes drawArrow {
-    0% {
-      stroke-dashoffset: var(--path-length);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    40% {
-      stroke-dashoffset: 0;
-    }
-    50% {
-      fill: rgba(255, 255, 255, 0.03);
-    }
-    80% {
-      transform: translateY(300px);
-    }
-    100% {
-      opacity: 0;
-      transform: translateY(300px);
-    }
-  }
-  
-  .arrow-svg {
-    animation: drawArrow 6s infinite;
-    fill: transparent;
-  }
-  
-  .arrow-path {
-    stroke-dasharray: var(--path-length);
+  0% {
     stroke-dashoffset: var(--path-length);
-    animation: inherit;
+    opacity: 0;
+    transform: translateY(0);
   }
+  20% {
+    opacity: 0.18;
+  }
+  60% {
+    stroke-dashoffset: 0;
+    opacity: 0.18;
+  }
+  90% {
+    opacity: 0.12;
+    transform: translateY(14px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+}
+
+.arrowSvg {
+  animation: drawArrow 9s ease-in-out infinite;
+  fill: transparent;
+  opacity: 0.18;
+  will-change: transform, opacity;
+}
+
+.arrowPath {
+  stroke-dasharray: var(--path-length);
+  stroke-dashoffset: var(--path-length);
+  stroke-width: 1;
+  animation: inherit;
+}

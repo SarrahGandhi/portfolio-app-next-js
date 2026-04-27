@@ -80,6 +80,8 @@ body {
 
 html {
   scroll-behavior: smooth;
+  /* Account for the fixed navbar so anchor jumps land below it */
+  scroll-padding-top: 80px;
 }
 
 body {

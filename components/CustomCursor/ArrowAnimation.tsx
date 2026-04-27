@@ -18,12 +18,13 @@ const ArrowAnimation = () => {
     return (
         <svg
             id="banner-arrow-svg"
-            width="376"
-            height="111"
+            width="220"
+            height="65"
             viewBox="0 0 376 111"
             fill="transparent"
             xmlns="http://www.w3.org/2000/svg"
-            className={`absolute bottom-20 left-1/2 -translate-x-1/2 z-0 ${styles.arrowSvg}`}
+            aria-hidden="true"
+            className={`absolute bottom-10 left-8 md:left-12 z-0 pointer-events-none ${styles.arrowSvg}`}
         >
             <path
                 className={styles.arrowPath}

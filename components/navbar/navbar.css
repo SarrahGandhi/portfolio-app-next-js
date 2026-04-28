@@ -168,6 +168,43 @@
   transform: scaleX(1);
 }
 
+/* ── Resume CTA ── */
+.nav-resume-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+  padding: 7px 14px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--foreground);
+  background: hsla(0 0% 100% / 0.04);
+  border: 1px solid hsla(0 0% 100% / 0.18);
+  border-radius: 999px;
+  transition: color 0.25s ease,
+              background 0.25s ease,
+              border-color 0.25s ease,
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-resume-link svg {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-resume-link:hover {
+  color: var(--primary-foreground);
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.nav-resume-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
 /* ── Hamburger ── */
 .hamburger {
   display: none;
@@ -301,6 +338,10 @@
   .mobile-menu__link:active {
     color: var(--primary);
     padding-left: 8px;
+  }
+
+  .mobile-menu__link--resume {
+    color: var(--primary);
   }
 
   .mobile-menu__socials {

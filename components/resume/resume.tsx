@@ -1,247 +1,352 @@
 import React from "react";
+import SectionTitle from "@/components/SectionTitle";
 import "./resume.css";
 
-function Resume() {
-  const experience = [
-    {
-      role: "FULL STACK DEVELOPER INTERN",
-      company: "IDESIGN TECH",
-      period: "2025",
-      location: "Hamilton, Ontario",
-      description: [
-        "Built a web-based booking management system with multi-role authentication (User/Admin) and secure access control.",
-        "Developed end-to-end booking workflows with real-time slot availability, cancellations, and status tracking.",
-        "Implemented service scheduling and item management (vehicles: cars, bikes, boats) integrated into the booking process.",
-        "Designed a responsive UI/UX with Tailwind CSS and Blade templates, ensuring mobile-friendly user experience.",
-        "Created an administrative dashboard for booking approvals, service oversight, user management, and email notifications.",
-      ],
-    },
-    {
-      role: "UI/UX Designer & Developer",
-      company: "Creative Agency",
-      period: "2022 - 2023",
-      location: "San Francisco, CA",
-      description: [
-        "Designed and developed websites for 15+ clients across various industries",
-        "Created design systems and component libraries in Figma",
-        "Implemented responsive designs with modern CSS and JavaScript",
-        "Led client presentations and gathered requirements",
-      ],
-    },
-    {
-      role: "Junior Web Developer",
-      company: "Digital Solutions Inc.",
-      period: "2021 - 2022",
-      location: "New York, NY",
-      description: [
-        "Developed and maintained WordPress and custom websites",
-        "Worked with HTML, CSS, JavaScript, and PHP",
-        "Assisted in database design and management",
-        "Participated in agile development processes",
-      ],
-    },
-  ];
+const CONTACT = {
+  location: "Toronto, Ontario",
+  email: "connect@sarrahgandhi.com",
+  website: "www.sarrahgandhi.com",
+  phone: "(416) 988 4558",
+  github: "github.com/sarrahgandhi",
+  linkedin: "/in/sarrah-gandhi",
+};
 
-  const education = [
-    {
-      degree: "Web Development",
-      school: "Humber Polytechnic",
-      period: "2024 - 2025",
-      highlights: "Post Graduate Diploma • Dean's List • GPA: 3.8",
-    },
-    {
-      degree: "Entrepreneurship Management",
-      school: "George Brown College",
-      period: "2024-2025",
-      highlights: "Post Graduate Diploma • GPA: 3.5",
-    },
-    {
-      degree: "Bachelor of Vocation in Visual Media",
-      school: "St Joseph's University",
-      period: "2018-2021",
-      highlights: "",
-    },
-  ];
+const SUMMARY =
+  "Web developer and designer focused on building responsive, user-centred interfaces — fluent in both code and design tooling. I move from research and IA through to React, Next.js, and accessible front-end engineering, and I prefer staying on a project end-to-end so the build matches the intent.";
 
-  const skills = {
-    technical: [
-      "JavaScript",
+const EXPERIENCE = [
+  {
+    role: "Web Developer",
+    company: "Freelance",
+    period: "Jun 2022 – Present",
+    location: "Toronto, Ontario",
+    description: [
+      "Led 15+ client engagements across branding, web, and digital marketing, owning end-to-end delivery.",
+      "Coordinated 10+ designers across scope and feedback to ship ~90% of projects on time.",
+      "Drove client discovery through launch, resulting in ~40% repeat business.",
+    ],
+  },
+  {
+    role: "Full Stack Developer Intern",
+    company: "IDesignTech",
+    period: "Jun 2025 – Aug 2025",
+    location: "Hamilton, Ontario",
+    description: [
+      "Designed and built UX for a SaaS booking platform where real-time actions (rescheduling, cancellations, approvals) directly impacted availability.",
+      "Created and refined 20+ core user flows informed by analytics insights and stakeholder feedback.",
+      "Owned 4 production-ready features across admin and user-facing dashboards.",
+    ],
+  },
+  {
+    role: "Lead Web Developer, Front End",
+    company: "SLAY Coffee",
+    period: "Sept 2023 – Apr 2024",
+    location: "Bangalore, India",
+    description: [
+      "Maintained and optimized the company's WordPress site to support marketing campaigns and product launches.",
+      "Improved site UX by fixing design inconsistencies, streamlining product pages, and ensuring responsive performance.",
+      "Monitored performance via Google Analytics and identified key areas for content and conversion optimization.",
+    ],
+  },
+];
+
+const EDUCATION = [
+  {
+    degree: "Web Development",
+    school: "Humber Polytechnic",
+    period: "Class of 2025",
+    highlights: "CGPA 3.5 / 4.0",
+  },
+  {
+    degree: "Entrepreneurship Management",
+    school: "George Brown College",
+    period: "Class of 2024",
+    highlights: "",
+  },
+  {
+    degree: "Bachelor's in Visual Media",
+    school: "St Joseph's University",
+    period: "Class of 2020",
+    highlights: "",
+  },
+];
+
+const COURSEWORK = [
+  "HTTP 5222 — Full Stack Web Development",
+  "IXD 5206 — Front End Development",
+  "HTTP 5221 — Security and Usability",
+];
+
+const SKILLS = [
+  {
+    label: "Development",
+    items: [
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6+)",
       "TypeScript",
       "React",
       "Next.js",
-      "Node.js",
-      "HTML5",
-      "CSS3",
-      "Tailwind CSS",
-      "MongoDB",
-      "MySQL",
-      "Git",
-      "REST APIs",
+      "Responsive Design",
+      "Laravel",
+      "Node & NPM build",
     ],
-    design: [
+  },
+  {
+    label: "UI / UX Foundations",
+    items: [
+      "User-Centered Design",
+      "Information Architecture",
+      "Interaction Design",
+      "Accessibility",
+    ],
+  },
+  {
+    label: "Tools & Workflow",
+    items: [
       "Figma",
-      "Adobe XD",
-      "Photoshop",
-      "Illustrator",
-      "InDesign",
-      "Premiere Pro",
-      "After Effects",
-      "Prototyping",
+      "Adobe Creative Suite",
+      "Git & GitHub",
+      "REST APIs",
+      "Supabase",
+      "Debugging",
     ],
-    soft: [
-      "Problem Solving",
-      "Communication",
-      "Team Collaboration",
-      "Project Management",
-      "Agile/Scrum",
-      "Leadership",
-    ],
-  };
+  },
+];
 
+const PROJECTS = [
+  {
+    name: "Milestone Manager",
+    tagline: "A wedding planning and RSVP management system.",
+    stack: [
+      "React",
+      "TypeScript",
+      "JavaScript",
+      "Supabase",
+      "PostgreSQL",
+      "Vercel",
+      "Render",
+    ],
+  },
+];
+
+const ABOUT = [
+  "Built a fully customized wedding platform to manage my own upcoming wedding.",
+  "Wiz National Spelling Bee — nationally ranked, 20th at the national competition.",
+  "Cold-plunged in the middle of a snowstorm in 2025.",
+  "Hated math, but competed in the national abacus competition in Bangalore.",
+  "Won 3rd place in a foreign-language storytelling competition without knowing the language.",
+];
+
+function Resume() {
   return (
-    <div className="resume-container">
-      {/* Header Section */}
-      <section className="resume-header">
-        <div className="resume-header-content">
-          <div className="resume-title-section">
-            <h1>Sarrah Gandhi</h1>
-            <p className="resume-subtitle">
-              Designer & Developer crafting beautiful digital experiences
-            </p>
-            <div className="resume-contact">
-              <span>📍 Toronto, Canada</span>
-              <span>✉️ thesarrahgandhi@gmail.com</span>
-              <span>🔗 sarrahgandhi.com</span>
+    <div className="resume">
+      {/* ── Hero ── */}
+      <section className="resume__hero">
+        <div className="resume__container">
+          <p className="resume__eyebrow">Résumé · Updated 2026</p>
+          <h1 className="resume__title">
+            <span className="resume__title-primary">SARRAH</span>
+            <br />
+            <span className="resume__title-indent">GANDHI</span>
+          </h1>
+          <p className="resume__intro">
+            <span className="resume__intro-name">Web developer & designer</span>{" "}
+            based in Toronto. The same résumé you&apos;d find in my inbox — only
+            written in R Markdown.
+          </p>
+
+          <div className="resume__hero-bottom">
+            <ul className="resume__contact">
+              <li>
+                <span className="resume__contact-label">Location</span>
+                <span>{CONTACT.location}</span>
+              </li>
+              <li>
+                <span className="resume__contact-label">Email</span>
+                <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+              </li>
+              <li>
+                <span className="resume__contact-label">Web</span>
+                <a
+                  href={`https://${CONTACT.website}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {CONTACT.website}
+                </a>
+              </li>
+              <li>
+                <span className="resume__contact-label">Phone</span>
+                <span>{CONTACT.phone}</span>
+              </li>
+            </ul>
+
+            <div className="resume__actions">
+              <a
+                href="/sarrah-gandhi-resume.Rmd"
+                download="sarrah-gandhi-resume.Rmd"
+                className="resume__btn resume__btn--primary"
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                >
+                  <path d="M12 5v14M5 12l7 7 7-7" />
+                </svg>
+                Download .Rmd
+              </a>
+              <a
+                href="/sarrah-gandhi-resume.Rmd"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="resume__btn"
+              >
+                View source
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
             </div>
           </div>
-          <button className="download-btn">
-            <span className="download-icon">↓</span>
-            Download PDF
-          </button>
         </div>
       </section>
 
-      {/* Summary Section */}
-      <section className="resume-summary">
-        <p>
-          Creative frontend developer and UI UX Designer with experience building responsive,
-          user-centric web applications. I combine design thinking with
-          technical expertise to create digital experiences that are both
-          beautiful and functional. Passionate about clean code, accessibility,
-          and continuous learning.
-        </p>
+      {/* ── Summary ── */}
+      <section className="resume__section">
+        <div className="resume__container">
+          <SectionTitle title="Summary" />
+          <p className="resume__summary">{SUMMARY}</p>
+        </div>
       </section>
 
-      {/* Experience Section */}
-      <section className="resume-section experience-section">
-        <h2 className="section-heading">Work Experience</h2>
-        <div className="experience-list">
-          {experience.map((job, index) => (
-            <div className="experience-card" key={index}>
-              <div className="experience-header">
-                <div className="experience-title">
-                  <h3>{job.role}</h3>
-                  <span className="company-name">{job.company}</span>
+      {/* ── Experience ── */}
+      <section className="resume__section">
+        <div className="resume__container">
+          <SectionTitle title="Experience" />
+          <ol className="resume__timeline">
+            {EXPERIENCE.map((job, index) => (
+              <li className="resume-exp" key={`${job.company}-${index}`}>
+                <div className="resume-exp__rail">
+                  <span className="resume-exp__dot" />
+                  {index < EXPERIENCE.length - 1 && (
+                    <span className="resume-exp__line" />
+                  )}
                 </div>
-                <div className="experience-meta">
-                  <span className="period-badge">{job.period}</span>
-                  <span className="location">{job.location}</span>
+                <div className="resume-exp__body">
+                  <div className="resume-exp__head">
+                    <p className="resume-exp__company">{job.company}</p>
+                    <span className="resume-exp__period">{job.period}</span>
+                  </div>
+                  <h3 className="resume-exp__role">{job.role}</h3>
+                  <p className="resume-exp__location">{job.location}</p>
+                  <ul className="resume-exp__list">
+                    {job.description.map((item, i) => (
+                      <li key={i}>{item}</li>
+                    ))}
+                  </ul>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* ── Projects ── */}
+      <section className="resume__section">
+        <div className="resume__container">
+          <SectionTitle title="Selected Project" />
+          <div className="resume__projects">
+            {PROJECTS.map((project) => (
+              <article className="resume-project" key={project.name}>
+                <div className="resume-project__header">
+                  <h3 className="resume-project__name">{project.name}</h3>
+                  <p className="resume-project__tagline">{project.tagline}</p>
+                </div>
+                <div className="resume__chips">
+                  {project.stack.map((tech) => (
+                    <span className="resume__chip" key={tech}>
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Skills ── */}
+      <section className="resume__section">
+        <div className="resume__container">
+          <SectionTitle title="Core Skills" />
+          <div className="resume__skills">
+            {SKILLS.map((group) => (
+              <div className="resume-skills" key={group.label}>
+                <h4 className="resume-skills__label">{group.label}</h4>
+                <div className="resume__chips">
+                  {group.items.map((skill) => (
+                    <span className="resume__chip" key={skill}>
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
-              <ul className="experience-description">
-                {job.description.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section className="resume-section skills-section">
-        <h2 className="section-heading">Skills & Tools</h2>
-        <div className="skills-grid">
-          <div className="skills-category">
-            <h3>Technical</h3>
-            <div className="skills-tags">
-              {skills.technical.map((skill, index) => (
-                <span className="skill-tag" key={index}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="skills-category">
-            <h3>Design</h3>
-            <div className="skills-tags">
-              {skills.design.map((skill, index) => (
-                <span className="skill-tag" key={index}>
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div className="skills-category">
-            <h3>Soft Skills</h3>
-            <div className="skills-tags">
-              {skills.soft.map((skill, index) => (
-                <span className="skill-tag" key={index}>
-                  {skill}
-                </span>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Education Section */}
-      <section className="resume-section education-section">
-        <h2 className="section-heading">Education</h2>
-        <div className="education-list">
-          {education.map((edu, index) => (
-            <div className="education-card" key={index}>
-              <div className="education-period">{edu.period}</div>
-              <h3>{edu.degree}</h3>
-              <span className="school-name">{edu.school}</span>
-              {edu.highlights && (
-                <p className="education-highlights">{edu.highlights}</p>
-              )}
-            </div>
-          ))}
+      {/* ── Education ── */}
+      <section className="resume__section">
+        <div className="resume__container">
+          <SectionTitle title="Education" />
+          <div className="resume__education">
+            {EDUCATION.map((edu, index) => (
+              <article className="resume-edu" key={`${edu.school}-${index}`}>
+                <p className="resume-edu__period">{edu.period}</p>
+                <h3 className="resume-edu__degree">{edu.degree}</h3>
+                <p className="resume-edu__school">{edu.school}</p>
+                {edu.highlights && (
+                  <p className="resume-edu__highlights">{edu.highlights}</p>
+                )}
+              </article>
+            ))}
+          </div>
+
+          <div className="resume__coursework">
+            <h4 className="resume__coursework-label">Relevant Coursework</h4>
+            <ul className="resume__coursework-list">
+              {COURSEWORK.map((course) => (
+                <li key={course}>{course}</li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <section className="resume-footer">
-        <div className="footer-content">
-          <p>Let&apos;s build something amazing together</p>
-          <div className="footer-links">
-            <a
-              href="https://github.com/sarrahgandhi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              GitHub
-            </a>
-            <a
-              href="https://linkedin.com/in/sarrah-gandhi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              LinkedIn
-            </a>
-            <a
-              href="https://behance.net/sarrahgandhi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="social-link"
-            >
-              Behance
-            </a>
-          </div>
+      {/* ── Off the clock ── */}
+      <section className="resume__section resume__section--last">
+        <div className="resume__container">
+          <SectionTitle title="Off the clock" />
+          <ul className="resume__about">
+            {ABOUT.map((item, i) => (
+              <li key={i}>{item}</li>
+            ))}
+          </ul>
         </div>
       </section>
     </div>

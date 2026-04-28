@@ -95,6 +95,27 @@ function Navbar() {
                 </a>
               </li>
             ))}
+            <li>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="nav-resume-link"
+              >
+                Resume
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
+            </li>
           </ul>
 
           <button
@@ -122,6 +143,16 @@ function Navbar() {
               {link.label}
             </Link>
           ))}
+          <a
+            href="/resume"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mobile-menu__link mobile-menu__link--resume"
+            onClick={closeMenu}
+            style={{ animationDelay: `${SECTION_LINKS.length * 60}ms` }}
+          >
+            Resume ↗
+          </a>
         </div>
         <div className="mobile-menu__socials">
           {SOCIAL_LINKS.map((link) => (

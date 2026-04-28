@@ -30,6 +30,25 @@ function Footer() {
               <a href="mailto:connect@sarrahgandhi.com" className="footer__link">
                 connect@sarrahgandhi.com
               </a>
+              <a
+                href="/resume"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer__link"
+              >
+                Resume
+                <svg
+                  width="10"
+                  height="10"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  aria-hidden="true"
+                >
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </a>
             </div>
             <div className="footer__link-group">
               <h4 className="footer__link-title">Socials</h4>

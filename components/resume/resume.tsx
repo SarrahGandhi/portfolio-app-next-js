@@ -153,7 +153,7 @@ function Resume() {
           <p className="resume__intro">
             <span className="resume__intro-name">Web developer & designer</span>{" "}
             based in Toronto. The same résumé you&apos;d find in my inbox — only
-            written in R Markdown.
+            written in Markdown.
           </p>
 
           <div className="resume__hero-bottom">
@@ -202,22 +202,21 @@ function Resume() {
                 Download .md
               </a>
               <a
-                href="/sarrah-gandhi-resume.md"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/sarrah-gandhi-resume.pdf"
+                download="sarrah-gandhi-resume.pdf"
                 className="resume__btn"
               >
-                View source
+                Download PDF
                 <svg
-                  width="12"
-                  height="12"
+                  width="14"
+                  height="14"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
                   strokeWidth="2.5"
                   aria-hidden="true"
                 >
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  <path d="M12 5v14M5 12l7 7 7-7" />
                 </svg>
               </a>
             </div>

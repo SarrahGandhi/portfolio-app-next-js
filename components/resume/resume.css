@@ -3,7 +3,10 @@
    ────────────────────────────────────────────── */
 
 .resume {
-  padding-top: 96px;
+  padding-top: clamp(72px, 14vw, 96px);
+  padding-inline-start: env(safe-area-inset-left, 0px);
+  padding-inline-end: env(safe-area-inset-right, 0px);
+  overflow-wrap: anywhere;
 }
 
 .resume__container {
@@ -90,8 +93,8 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, max-content));
-  gap: 18px 48px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 148px), 1fr));
+  gap: clamp(14px, 3vw, 18px) clamp(24px, 6vw, 48px);
 }
 
 .resume__contact li {
@@ -248,12 +251,9 @@
 
 .resume-exp__body {
   flex: 1;
+  min-width: 0;
   padding-bottom: 32px;
   transition: transform var(--transition-fast);
-}
-
-.resume-exp:hover .resume-exp__body {
-  transform: translateX(4px);
 }
 
 .resume-exp:last-child .resume-exp__body {
@@ -344,8 +344,8 @@
    ────────────────────────────────────────────── */
 .resume__projects {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: clamp(18px, 3vw, 24px);
 }
 
 .resume-project {
@@ -419,7 +419,7 @@
    ────────────────────────────────────────────── */
 .resume__skills {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
   gap: clamp(28px, 4vw, 56px);
 }
 
@@ -440,8 +440,8 @@
    ────────────────────────────────────────────── */
 .resume__education {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: clamp(16px, 3vw, 20px);
   margin-bottom: 28px;
 }
 
@@ -542,8 +542,8 @@
   padding: 0;
   margin: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 14px 32px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+  gap: clamp(12px, 3vw, 14px) clamp(18px, 4vw, 32px);
   max-width: 920px;
 }
 
@@ -568,47 +568,159 @@
 /* ──────────────────────────────────────────────
    Responsive
    ────────────────────────────────────────────── */
+
+@media (max-width: 900px) {
+  .resume__hero {
+    padding: clamp(20px, 4vw, 40px) 0 clamp(28px, 5vw, 48px);
+  }
+
+  .resume-project {
+    padding: clamp(20px, 4vw, 28px);
+  }
+
+  .resume-edu {
+    padding: clamp(20px, 4vw, 26px);
+  }
+}
+
 @media (max-width: 768px) {
   .resume {
-    padding-top: 80px;
+    padding-top: clamp(76px, 16vw, 88px);
   }
 
   .resume__hero-bottom {
     flex-direction: column;
     align-items: stretch;
+    gap: clamp(20px, 4vw, 28px);
+    padding-top: clamp(18px, 3vw, 24px);
   }
 
   .resume__actions {
     width: 100%;
+    justify-content: stretch;
+    gap: 10px;
   }
 
   .resume__btn {
-    flex: 1 1 auto;
+    flex: 1 1 calc(50% - 6px);
+    min-width: 0;
     justify-content: center;
+    padding-inline: clamp(14px, 4vw, 22px);
   }
 
   .resume-exp {
-    gap: 20px;
+    gap: clamp(14px, 3vw, 20px);
   }
 
   .resume-exp__body {
-    padding-bottom: 40px;
+    padding-bottom: clamp(32px, 8vw, 40px);
   }
 
   .resume-exp__head {
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
     align-items: flex-start;
+  }
+
+  .resume-exp__rail {
+    padding-top: 6px;
+  }
+}
+
+@media (max-width: 640px) {
+  .resume__section {
+    padding: clamp(26px, 7vw, 40px) 0;
+  }
+
+  .resume__section--last {
+    padding-bottom: clamp(40px, 10vw, 56px);
+  }
+
+  .resume__coursework-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .resume__coursework-list li {
+    padding-right: 0;
+  }
+
+  .resume__coursework-list li:not(:last-child)::after {
+    display: none;
+  }
+
+  .resume__skills {
+    grid-template-columns: 1fr;
+    gap: clamp(22px, 6vw, 36px);
+  }
+
+  .resume__education {
+    grid-template-columns: 1fr;
+  }
+
+  .resume__projects {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
+  .resume {
+    padding-top: 72px;
+  }
+
+  .resume__eyebrow {
+    margin-bottom: clamp(14px, 4vw, 24px);
+    letter-spacing: 0.14em;
+  }
+
   .resume__title-indent {
-    padding-left: 32px;
+    padding-left: clamp(18px, 9vw, 40px);
+  }
+
+  .resume__intro {
+    margin-bottom: clamp(22px, 6vw, 32px);
   }
 
   .resume__contact {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .resume__contact li span:not(.resume__contact-label),
+  .resume__contact li a {
+    font-size: max(13px, min(4vw, 14px));
+  }
+
+  .resume__about li {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .resume-exp__list li {
+    font-size: 13px;
+    padding-left: 18px;
+  }
+
+  .resume-exp__list li::before {
+    top: 8px;
+  }
+}
+
+@media (max-width: 380px) {
+  .resume__actions {
+    flex-direction: column;
+  }
+
+  .resume__btn {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
+
+@media (hover: hover) {
+  .resume-exp:hover .resume-exp__body {
+    transform: translateX(4px);
   }
 }
 

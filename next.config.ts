@@ -6,7 +6,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/sarrah-gandhi-resume.Rmd",
+        source: "/sarrah-gandhi-resume.md",
         headers: [
           {
             key: "Content-Type",

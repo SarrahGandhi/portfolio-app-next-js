@@ -21,10 +21,9 @@ const SOCIAL_LINKS = [
 // Matches the preloader's total duration (animationPhase 3 fires at 2500ms)
 const PRELOADER_DURATION = 2500;
 
-// Module-level flag: true once the navbar has waited out the preloader for
-// this browser session. Persists across client-side navigations (the JS
-// module isn't reloaded), but resets on a full page reload — which is when
-// the Preloader actually animates again.
+// Module-level flag: true once this JS runtime has waited out the preloader.
+// Persists across client-side navigations (module not reloaded); resets on full
+// page load so the navbar entrance lines up with a fresh preloader run.
 let preloaderHasFinished = false;
 
 function Navbar() {
@@ -96,12 +95,7 @@ function Navbar() {
               </li>
             ))}
             <li>
-              <a
-                href="/resume"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="nav-resume-link"
-              >
+              <Link href="/resume" className="nav-resume-link">
                 Resume
                 <svg
                   width="10"
@@ -114,7 +108,7 @@ function Navbar() {
                 >
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
-              </a>
+              </Link>
             </li>
           </ul>
 
@@ -143,16 +137,14 @@ function Navbar() {
               {link.label}
             </Link>
           ))}
-          <a
+          <Link
             href="/resume"
-            target="_blank"
-            rel="noopener noreferrer"
             className="mobile-menu__link mobile-menu__link--resume"
             onClick={closeMenu}
             style={{ animationDelay: `${SECTION_LINKS.length * 60}ms` }}
           >
-            Resume ↗
-          </a>
+            Resume →
+          </Link>
         </div>
         <div className="mobile-menu__socials">
           {SOCIAL_LINKS.map((link) => (

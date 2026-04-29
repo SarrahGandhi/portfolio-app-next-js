@@ -1,14 +1,19 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import './Preloader.css';
+
+/**
+ * Lives in root layout — instance survives client navigations (/ ↔ /resume etc.).
+ * Once phase 3 is reached it stays dismissed until a full document reload.
+ */
 const Preloader = () => {
     const [animationPhase, setAnimationPhase] = useState(0);
+
     useEffect(() => {
         const timeouts = [
             setTimeout(() => setAnimationPhase(1), 100),
             setTimeout(() => setAnimationPhase(2), 1500),
             setTimeout(() => setAnimationPhase(3), 2500),
-
         ];
         return () => timeouts.forEach(clearTimeout);
     }, []);

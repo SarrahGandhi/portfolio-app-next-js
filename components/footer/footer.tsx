@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import "./footer.css";
 
 const SOCIAL_LINKS = [
@@ -30,12 +31,7 @@ function Footer() {
               <a href="mailto:connect@sarrahgandhi.com" className="footer__link">
                 connect@sarrahgandhi.com
               </a>
-              <a
-                href="/resume"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer__link"
-              >
+              <Link href="/resume" className="footer__link">
                 Resume
                 <svg
                   width="10"
@@ -48,7 +44,7 @@ function Footer() {
                 >
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
-              </a>
+              </Link>
             </div>
             <div className="footer__link-group">
               <h4 className="footer__link-title">Socials</h4>

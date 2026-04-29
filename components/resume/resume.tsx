@@ -184,8 +184,8 @@ function Resume() {
 
             <div className="resume__actions">
               <a
-                href="/sarrah-gandhi-resume.Rmd"
-                download="sarrah-gandhi-resume.Rmd"
+                href="/sarrah-gandhi-resume.md"
+                download="sarrah-gandhi-resume.md"
                 className="resume__btn resume__btn--primary"
               >
                 <svg
@@ -199,10 +199,10 @@ function Resume() {
                 >
                   <path d="M12 5v14M5 12l7 7 7-7" />
                 </svg>
-                Download .Rmd
+                Download .md
               </a>
               <a
-                href="/sarrah-gandhi-resume.Rmd"
+                href="/sarrah-gandhi-resume.md"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="resume__btn"

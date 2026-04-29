@@ -1,28 +1,8 @@
 ---
 title: "Sarrah Gandhi — Resume"
 author: "Sarrah Gandhi"
-date: "`r format(Sys.Date(), '%B %Y')`"
-output:
-  pdf_document:
-    latex_engine: xelatex
-  html_document:
-    theme: cosmo
-    highlight: tango
-    toc: false
-params:
-  name: "Sarrah Gandhi"
-  position: "Web Developer & Designer"
-  phone: "(416) 988 4558"
-  email: "connect@sarrahgandhi.com"
-  website: "www.sarrahgandhi.com"
-  github: "github.com/sarrahgandhi"
-  linkedin: "linkedin.com/in/sarrah-gandhi"
-  location: "Toronto, Ontario, Canada"
+date: "April 2026"
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-```
 
 # Sarrah Gandhi
 
@@ -91,23 +71,6 @@ CGPA: 3.5 / 4.0
 
 ## Core Skills
 
-```{r skills}
-skills <- list(
-  Development = c(
-    "HTML5", "CSS3", "JavaScript (ES6+)", "TypeScript", "React",
-    "Next.js", "Responsive Design", "Laravel", "Node and NPM build"
-  ),
-  `UI / UX Foundations` = c(
-    "User-Centered Design", "Information Architecture",
-    "Interaction Design", "Accessibility"
-  ),
-  `Tools & Workflow` = c(
-    "Figma", "Adobe Creative Suite", "Git and GitHub",
-    "REST APIs", "Supabase", "Debugging"
-  )
-)
-```
-
 **Development:** HTML5 · CSS3 · JavaScript (ES6+) · TypeScript · React · Next.js · Responsive Design · Laravel · Node and NPM build
 
 **UI / UX Foundations:** User-Centered Design · Information Architecture · Interaction Design · Accessibility
@@ -123,15 +86,3 @@ skills <- list(
 - Cold-plunged in the middle of a snowstorm in 2025.
 - Hated math, but competed in the national abacus competition in Bangalore, India.
 - Competed and won 3rd place in a foreign language storytelling competition without knowing the language.
-
----
-
-<!--
-This résumé is written in R Markdown.
-
-To render to PDF:
-  rmarkdown::render("sarrah-gandhi-resume.Rmd", output_format = "pdf_document")
-
-To render to HTML:
-  rmarkdown::render("sarrah-gandhi-resume.Rmd", output_format = "html_document")
--->
